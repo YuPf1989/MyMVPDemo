@@ -87,7 +87,7 @@ public abstract class BaseListFragment extends LazyLoadFragment implements Swipe
     public void onRefresh() {
         int position = ((LinearLayoutManager) recycler.getLayoutManager()).findFirstVisibleItemPosition();
         if (position == 0) {
-            fetchData();
+            presenter.doRefresh();
         } else {
             recycler.scrollToPosition(15);
             recycler.smoothScrollToPosition(0);

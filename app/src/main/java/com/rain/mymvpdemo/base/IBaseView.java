@@ -20,5 +20,4 @@ public interface IBaseView {
      * 显示网络错误
      */
     void onShowNetError();
-
 }

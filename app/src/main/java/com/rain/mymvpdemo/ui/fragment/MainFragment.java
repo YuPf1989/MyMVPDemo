@@ -1,6 +1,7 @@
 package com.rain.mymvpdemo.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rain.mymvpdemo.R;
@@ -61,5 +62,16 @@ public class MainFragment extends BaseListFragment implements MyContract.View{
     public void onDestroy() {
         super.onDestroy();
         presenter.detachView();
+    }
+
+    @Override
+    public void onRefresh() {
+        int position = ((LinearLayoutManager) recycler.getLayoutManager()).findFirstVisibleItemPosition();
+        if (position == 0) {
+            presenter.doRefresh();
+        } else {
+            recycler.scrollToPosition(15);
+            recycler.smoothScrollToPosition(0);
+        }
     }
 }

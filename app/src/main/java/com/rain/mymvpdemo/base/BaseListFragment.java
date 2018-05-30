@@ -19,8 +19,8 @@ import java.util.List;
  * Description:
  */
 public abstract class BaseListFragment extends LazyLoadFragment implements SwipeRefreshLayout.OnRefreshListener, IBaseListView {
-    RecyclerView recycler;
-    SwipeRefreshLayout swipe;
+    protected RecyclerView recycler;
+    protected SwipeRefreshLayout swipe;
     protected BaseQuickAdapter adapter;
 
     @Override
@@ -81,17 +81,6 @@ public abstract class BaseListFragment extends LazyLoadFragment implements Swipe
     @Override
     public void onShowNoMore() {
 
-    }
-
-    @Override
-    public void onRefresh() {
-        int position = ((LinearLayoutManager) recycler.getLayoutManager()).findFirstVisibleItemPosition();
-        if (position == 0) {
-            presenter.doRefresh();
-        } else {
-            recycler.scrollToPosition(15);
-            recycler.smoothScrollToPosition(0);
-        }
     }
 
     @Override

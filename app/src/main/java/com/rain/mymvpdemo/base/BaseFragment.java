@@ -23,7 +23,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView{
     protected View rootView;
     protected Context mContext;
     private Unbinder bind;
-    protected IBasePresenter presenter;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

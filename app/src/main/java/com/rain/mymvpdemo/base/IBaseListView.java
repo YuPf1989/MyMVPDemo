@@ -12,21 +12,6 @@ import java.util.List;
 public interface IBaseListView extends IBaseView {
 
     /**
-     * 显示加载动画
-     */
-    void onShowLoading();
-
-    /**
-     * 隐藏加载
-     */
-    void onHideLoading();
-
-    /**
-     * 显示网络错误
-     */
-    void onShowNetError();
-
-    /**
      * 设置适配器数据
      */
     void onSetAdapterData(List<?> list);

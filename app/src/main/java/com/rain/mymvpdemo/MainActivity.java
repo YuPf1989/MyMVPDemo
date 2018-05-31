@@ -2,6 +2,7 @@ package com.rain.mymvpdemo;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.rain.mymvpdemo.base.BaseActivity;
 import com.rain.mymvpdemo.ui.fragment.DiscoveryTabView;
 import com.rain.mymvpdemo.ui.fragment.HomeTabView;
+import com.rain.mymvpdemo.ui.fragment.HotTabView;
 import com.rain.mymvpdemo.ui.fragment.MineTabView;
 import com.rain.mymvpdemo.util.ToastUtil;
 
@@ -19,14 +21,13 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.content)
-    FrameLayout content;
     @BindView(R.id.bottom_navigation)
     BottomNavigationViewEx bottomNavigation;
 
     private static final int HOME_TAB = 0;
     private static final int DISCOVERY_TAB = 1;
-    private static final int MY_TAB = 2;
+    private static final int HOT_TAB = 2;
+    private static final int MY_TAB = 3;
     private int position = 0;
     private static final String POSITION = "position";
     private static final String SELECT_ITEM = "navigation_select_item";
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity {
     private HomeTabView homeTabView;
     private DiscoveryTabView discoveryTabView;
     private MineTabView myTabView;
-    private long firstClickTime = 0;
+    private HotTabView hotTabView;
     private long existTime = 0;
 
     @Override
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity {
             homeTabView = (HomeTabView) getSupportFragmentManager().findFragmentByTag(HomeTabView.class.getSimpleName());
             discoveryTabView = (DiscoveryTabView) getSupportFragmentManager().findFragmentByTag(DiscoveryTabView.class.getSimpleName());
             myTabView = (MineTabView) getSupportFragmentManager().findFragmentByTag(MineTabView.class.getSimpleName());
+            hotTabView = (HotTabView) getSupportFragmentManager().findFragmentByTag(HotTabView.class.getSimpleName());
             showFragment(savedInstanceState.getInt(POSITION));
             bottomNavigation.setSelectedItemId(savedInstanceState.getInt(SELECT_ITEM));
         } else {
@@ -121,6 +123,10 @@ public class MainActivity extends BaseActivity {
         if (myTabView != null) {
             ft.hide(myTabView);
         }
+
+        if (hotTabView != null) {
+            ft.hide(hotTabView);
+        }
     }
 
     private void initBottomNavigation() {
@@ -132,13 +138,16 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_build:
+                    case R.id.action_home:
                         showFragment(HOME_TAB);
                         break;
-                    case R.id.action_check:
+                    case R.id.action_discovery:
                         showFragment(DISCOVERY_TAB);
                         break;
-                    case R.id.action_my:
+                    case R.id.action_hot:
+                        showFragment(DISCOVERY_TAB);
+                        break;
+                    case R.id.action_mine:
                         showFragment(MY_TAB);
                         break;
                 }
@@ -157,4 +166,5 @@ public class MainActivity extends BaseActivity {
             super.onBackPressed();
         }
     }
+
 }

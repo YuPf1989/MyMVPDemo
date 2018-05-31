@@ -9,7 +9,7 @@ import io.reactivex.disposables.Disposable;
  * Description:
  */
 public class BasePresenter implements IBasePresenter{
-    private IBaseView view;
+    protected IBaseView view;
     private CompositeDisposable compositeDisposable;
 
     @Override

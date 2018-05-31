@@ -16,6 +16,7 @@ import java.util.List;
  * Author:rain
  * Date:2018/5/29 16:17
  * Description:
+ * 这是一个使用范例
  */
 public class MainFragment extends BaseListFragment implements MyContract.View{
     private static final String TAG  = "MainFragment";

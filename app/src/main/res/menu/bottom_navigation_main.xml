@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_normal"
+        android:title="每日精选"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_discovery"
+        android:enabled="true"
+        android:icon="@drawable/ic_discovery_normal"
+        android:title="发现"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_hot"
+        android:enabled="true"
+        android:icon="@drawable/ic_hot_normal"
+        android:title="热门"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_mine"
+        android:enabled="true"
+        android:icon="@drawable/ic_mine_normal"
+        android:title="我的"
+        app:showAsAction="ifRoom"/>
+
+</menu>

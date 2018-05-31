@@ -20,6 +20,7 @@ import java.util.List;
 public class MainFragment extends BaseListFragment implements MyContract.View{
     private static final String TAG  = "MainFragment";
     private MyContract.Presenter presenter;
+
     @Override
     public void onSetAdapterData(List list) {
         adapter.setNewData(list);
@@ -42,15 +43,10 @@ public class MainFragment extends BaseListFragment implements MyContract.View{
     }
 
     @Override
-    public void onLoadData() {
-        presenter.doLoadData();
-    }
-
-    @Override
     public void fetchData() {
         super.fetchData();
         onShowLoading();
-        onLoadData();
+        presenter.doLoadData();
     }
 
     @Override

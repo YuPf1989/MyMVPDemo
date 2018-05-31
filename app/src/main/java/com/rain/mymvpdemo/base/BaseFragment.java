@@ -18,7 +18,7 @@ import butterknife.Unbinder;
  * Description:This is BaseFragment
  */
 
-public abstract class BaseFragment extends Fragment implements IBaseView{
+public abstract class BaseFragment extends Fragment {
 
     protected View rootView;
     protected Context mContext;

@@ -1,7 +1,7 @@
-package com.rain.mymvpdemo.model.api.MyObserver;
+package com.rain.mymvpdemo.net.MyObserver;
 
-import com.a51ehealth.healthmanagement.MyApplication;
-import com.a51ehealth.healthmanagement.net.Exception.ApiErrorHelper;
+import com.rain.mymvpdemo.MyApplication;
+import com.rain.mymvpdemo.net.Exception.ApiErrorHelper;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;

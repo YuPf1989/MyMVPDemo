@@ -1,4 +1,4 @@
-package com.rain.mymvpdemo.model.api.Exception;
+package com.rain.mymvpdemo.net.Exception;
 
 /**
  * 和自己后台规定的错误码代码，只要求再onError的时候抛出错误

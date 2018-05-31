@@ -1,4 +1,4 @@
-package com.rain.mymvpdemo.model.api.MyGsonConverter;
+package com.rain.mymvpdemo.net.MyGsonConverter;
 
 import java.io.Serializable;
 

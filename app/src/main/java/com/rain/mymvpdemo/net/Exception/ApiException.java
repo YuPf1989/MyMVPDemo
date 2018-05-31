@@ -1,4 +1,4 @@
-package com.rain.mymvpdemo.model.api.Exception;
+package com.rain.mymvpdemo.net.Exception;
 
 /**
  *http://www.jianshu.com/p/c105a4177982
@@ -6,8 +6,6 @@ package com.rain.mymvpdemo.model.api.Exception;
 
 public class ApiException extends RuntimeException {
     private int errorCode;
-
-
     public ApiException(int code, String msg) {
         super(msg);
         this.errorCode = code;

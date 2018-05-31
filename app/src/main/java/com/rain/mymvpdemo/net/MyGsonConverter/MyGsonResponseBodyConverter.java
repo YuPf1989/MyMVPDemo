@@ -1,11 +1,11 @@
-package com.rain.mymvpdemo.model.api.MyGsonConverter;
+package com.rain.mymvpdemo.net.MyGsonConverter;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
-import com.rain.mymvpdemo.model.api.Exception.ApiException;
+import com.rain.mymvpdemo.net.Exception.ApiException;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -57,6 +57,4 @@ public class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody, T
             value.close();
         }
     }
-
-
 }

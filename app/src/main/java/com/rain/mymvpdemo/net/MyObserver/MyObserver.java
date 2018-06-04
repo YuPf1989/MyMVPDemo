@@ -19,9 +19,6 @@ public abstract class MyObserver<T> implements Observer<T> {
     public void onSubscribe(@NonNull Disposable d) {
 
     }
-
-
-
     @Override
     public abstract void onNext(@NonNull T t);
 

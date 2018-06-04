@@ -32,6 +32,11 @@ public class MainFragment extends BaseListFragment implements MyContract.View{
         return new MySimpleAdapter(R.layout.list_item, null);
     }
 
+    @Override
+    public void setLoadMoreData(List<?> list) {
+
+    }
+
     public static MainFragment newInstance() {
         return new MainFragment();
     }

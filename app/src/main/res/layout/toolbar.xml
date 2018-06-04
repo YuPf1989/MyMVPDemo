@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="color/white"
+        android:background="@color/white"
         app:layout_scrollFlags="scroll|enterAlways|snap"
         app:popupTheme="@style/AppTheme.PopupOverlay">
 
@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                tools:text="11:39" />
+                tools:text="11:39"
+                />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 

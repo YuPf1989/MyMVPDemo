@@ -10,7 +10,7 @@ public abstract class LazyLoadFragment extends BaseFragment {
     // 初始化是否完成
     protected boolean isViewInitiated;
     // 用户是否可见
-    protected boolean isVisibleToUser ;
+    protected boolean isVisibleToUser  = true;
     // 数据是否第一次初始化过
     protected boolean isDataInitiated;
 

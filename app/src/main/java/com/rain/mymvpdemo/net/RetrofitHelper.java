@@ -18,6 +18,7 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Author:rain
@@ -46,7 +47,7 @@ public class RetrofitHelper {
     private RetrofitHelper() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(UrlConstant.BASE_URL)
-                .addConverterFactory(MyGsonConverterFactory.create())         // 自定义gson解析
+                .addConverterFactory(GsonConverterFactory.create())         // gson解析
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())  // rxjava支持
                 .client(getOkHttpClient())                                  // okhttpClient
                 .build();

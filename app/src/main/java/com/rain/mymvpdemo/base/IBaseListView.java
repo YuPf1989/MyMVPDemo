@@ -25,4 +25,6 @@ public interface IBaseListView extends IBaseView {
      * 加载完毕
      */
     void onShowNoMore();
+
+    void setLoadMoreData(List<?> list);
 }

@@ -1,6 +1,7 @@
 package com.rain.mymvpdemo.model.api;
 
 
+
 import com.rain.mymvpdemo.model.entity.HomeBean;
 
 import io.reactivex.Observable;
@@ -18,15 +19,15 @@ public interface RetrofitService {
     /**
      * 首页精选
      */
-//    @GET("v2/feed?")
-//    Observable<HomeBean> getFirstHomeData(@Query("num") int num);
+    @GET("v2/feed?")
+    Observable<HomeBean> getFirstHomeData(@Query("num") int num);
 
-//    /**
-//     * 根据 nextPageUrl 请求数据下一页数据
-//     */
-//    @GET
-//    fun getMoreHomeData(@Url url: String): Observable<HomeBean>
-//
+    /**
+     * 根据 nextPageUrl 请求数据下一页数据
+     */
+    @GET
+    Observable<HomeBean> getMoreHomeData(@Url String url);
+
 //    /**
 //     * 根据item id获取相关视频
 //     */

@@ -6,6 +6,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseListFragment;
 
+import java.util.List;
+
 /**
  * Author:rain
  * Date:2018/5/15 9:33
@@ -34,6 +36,11 @@ public class MineTabView extends BaseListFragment {
     @Override
     public BaseQuickAdapter setAdapter() {
         return null;
+    }
+
+    @Override
+    public void setLoadMoreData(List<?> list) {
+
     }
 
     @Override

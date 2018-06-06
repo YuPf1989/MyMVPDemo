@@ -1,4 +1,4 @@
-package com.rain.mymvpdemo.contract;
+package com.rain.mymvpdemo.mvp.contract;
 
 
 import com.rain.mymvpdemo.base.IBaseListView;

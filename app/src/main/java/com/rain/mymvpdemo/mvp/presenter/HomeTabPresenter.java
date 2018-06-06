@@ -1,11 +1,11 @@
-package com.rain.mymvpdemo.presenter;
+package com.rain.mymvpdemo.mvp.presenter;
 
 import android.annotation.SuppressLint;
 
 import com.rain.mymvpdemo.base.BasePresenter;
-import com.rain.mymvpdemo.contract.HomeTabContract;
-import com.rain.mymvpdemo.model.HomeModel;
-import com.rain.mymvpdemo.model.entity.HomeBean;
+import com.rain.mymvpdemo.mvp.contract.HomeTabContract;
+import com.rain.mymvpdemo.mvp.model.HomeModel;
+import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 import com.rain.mymvpdemo.net.Exception.ExceptionHandle;
 
 import java.util.Iterator;

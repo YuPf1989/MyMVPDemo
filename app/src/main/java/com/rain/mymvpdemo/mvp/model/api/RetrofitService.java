@@ -1,8 +1,8 @@
-package com.rain.mymvpdemo.model.api;
+package com.rain.mymvpdemo.mvp.model.api;
 
 
 
-import com.rain.mymvpdemo.model.entity.HomeBean;
+import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

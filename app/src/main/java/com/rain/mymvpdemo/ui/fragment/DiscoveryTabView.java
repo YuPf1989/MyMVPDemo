@@ -1,32 +1,61 @@
 package com.rain.mymvpdemo.ui.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rain.mymvpdemo.R;
-import com.rain.mymvpdemo.base.BaseListFragment;
+import com.rain.mymvpdemo.base.BaseFragment;
+import com.rain.mymvpdemo.ui.adapter.DiscoveryTabAdapter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Author:rain
  * Date:2018/5/15 9:33
  * Description:
  */
-public class DiscoveryTabView extends BaseListFragment {
+public class DiscoveryTabView extends BaseFragment {
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.tab)
+    TabLayout tab;
+    @BindView(R.id.viewpager)
+    ViewPager viewpager;
+    Unbinder unbinder;
+
+    ArrayList<Fragment> fragments = new ArrayList<>();
+    List<String> titles = Arrays.asList("关注", "分类");
+
     @Override
     public void fetchData() {
-        
+
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_home_tab;
+        return R.layout.fragment_discovery_tab;
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        title.setText("发现");
+        fragments.add(FollowFragment.newInstance());
+        fragments.add(CategoryFragment.newInstance());
+        DiscoveryTabAdapter tabAdapter = new DiscoveryTabAdapter(getChildFragmentManager(), fragments, titles);
+        viewpager.setAdapter(tabAdapter);
+        tab.setupWithViewPager(viewpager);
     }
 
     public static DiscoveryTabView newInstance() {
@@ -34,22 +63,15 @@ public class DiscoveryTabView extends BaseListFragment {
     }
 
     @Override
-    public BaseQuickAdapter setAdapter() {
-        return null;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
     }
 
     @Override
-    public void setLoadMoreData(List<?> list) {
-
-    }
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    @Override
-    public void onShowNetError(String err_msg, int err_code) {
-
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

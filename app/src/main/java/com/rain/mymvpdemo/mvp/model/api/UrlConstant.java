@@ -1,4 +1,4 @@
-package com.rain.mymvpdemo.model.api;
+package com.rain.mymvpdemo.mvp.model.api;
 
 /**
  * Author:rain

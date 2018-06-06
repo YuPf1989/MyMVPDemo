@@ -1,4 +1,4 @@
-package com.rain.mymvpdemo.model.entity;
+package com.rain.mymvpdemo.mvp.model.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 

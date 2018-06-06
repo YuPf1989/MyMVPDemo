@@ -1,6 +1,6 @@
-package com.rain.mymvpdemo.model;
+package com.rain.mymvpdemo.mvp.model;
 
-import com.rain.mymvpdemo.model.entity.HomeBean;
+import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 import com.rain.mymvpdemo.net.RetrofitHelper;
 import com.rain.mymvpdemo.rx.scheduler.SchedulerUtils;
 

@@ -1,9 +1,9 @@
-package com.rain.mymvpdemo.presenter;
+package com.rain.mymvpdemo.mvp.presenter;
 
 import android.os.Handler;
 
 import com.rain.mymvpdemo.base.BasePresenter;
-import com.rain.mymvpdemo.contract.MyContract;
+import com.rain.mymvpdemo.mvp.contract.MyContract;
 
 import java.util.ArrayList;
 import java.util.List;

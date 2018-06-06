@@ -2,8 +2,8 @@ package com.rain.mymvpdemo.net;
 
 
 import com.rain.mymvpdemo.MyApplication;
-import com.rain.mymvpdemo.model.api.RetrofitService;
-import com.rain.mymvpdemo.model.api.UrlConstant;
+import com.rain.mymvpdemo.mvp.model.api.RetrofitService;
+import com.rain.mymvpdemo.mvp.model.api.UrlConstant;
 import com.rain.mymvpdemo.net.MyGsonConverter.MyGsonConverterFactory;
 import com.rain.mymvpdemo.util.SPUtils;
 

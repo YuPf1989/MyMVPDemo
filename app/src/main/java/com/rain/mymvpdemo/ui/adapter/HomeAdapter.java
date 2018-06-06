@@ -1,7 +1,5 @@
 package com.rain.mymvpdemo.ui.adapter;
 
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -9,11 +7,9 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.glide.GlideApp;
-import com.rain.mymvpdemo.model.entity.HomeBean;
+import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 import com.rain.mymvpdemo.util.TimeUtils;
 import com.rain.mymvpdemo.util.ToastUtil;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 
 import java.util.List;
 

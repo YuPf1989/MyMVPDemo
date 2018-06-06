@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseListFragment;
-import com.rain.mymvpdemo.contract.MyContract;
-import com.rain.mymvpdemo.presenter.MyPresenter;
+import com.rain.mymvpdemo.mvp.contract.MyContract;
+import com.rain.mymvpdemo.mvp.presenter.MyPresenter;
 import com.rain.mymvpdemo.ui.adapter.MySimpleAdapter;
 
 import java.util.List;

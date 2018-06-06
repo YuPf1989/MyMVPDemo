@@ -17,14 +17,9 @@ public interface IBaseListView extends IBaseView {
     void onSetAdapterData(List<?> list);
 
     /**
-     * 设置适配器
-     */
-    BaseQuickAdapter setAdapter();
-
-    /**
      * 加载完毕
      */
-    void onShowNoMore();
+    void onLoadEnd();
 
     void setLoadMoreData(List<?> list);
 }

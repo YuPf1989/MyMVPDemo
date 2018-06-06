@@ -47,4 +47,9 @@ public class HotTabView extends BaseListFragment {
     public void onRefresh() {
 
     }
+
+    @Override
+    public void onShowNetError(String err_msg, int err_code) {
+
+    }
 }

@@ -1,21 +1,17 @@
 package com.rain.mymvpdemo.presenter;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 
-import com.google.gson.Gson;
 import com.rain.mymvpdemo.base.BasePresenter;
 import com.rain.mymvpdemo.contract.HomeTabContract;
 import com.rain.mymvpdemo.model.HomeModel;
 import com.rain.mymvpdemo.model.entity.HomeBean;
+import com.rain.mymvpdemo.net.Exception.ExceptionHandle;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
-import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -72,16 +68,13 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
                                 iterator.remove();
                             }
                         }
-
-//                        bannerList.addAll(newBannerList);
                         ((HomeTabContract.View) view).onSetAdapterData(newBannerList);
-//                        String json = new Gson().toJson(bannerList);
-//                        Log.e(TAG, "accept: json:"+json);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-
+                        view.onHideLoading();
+                        view.onShowNetError(ExceptionHandle.handleException(throwable),ExceptionHandle.getErrorCode());
                     }
                 });
         this.addSubscription(disposable);
@@ -93,7 +86,6 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
                 .subscribe(new Consumer<HomeBean>() {
                     @Override
                     public void accept(HomeBean homeBean) throws Exception {
-                        view.onHideLoading();
                         nextPageUrl = homeBean.getNextPageUrl();
                         List<HomeBean.IssueListBean.ItemListBean> newBannerList = homeBean.getIssueList().get(0).getItemList();
                         Iterator<HomeBean.IssueListBean.ItemListBean> iterator = newBannerList.iterator();
@@ -105,11 +97,13 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
                             }
                         }
                         ((HomeTabContract.View) view).setLoadMoreData(newBannerList);
+                        ((HomeTabContract.View) view).onLoadComplete();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-
+                        view.onHideLoading();
+                        view.onShowNetError(ExceptionHandle.handleException(throwable),ExceptionHandle.getErrorCode());
                     }
                 });
         this.addSubscription(disposable);

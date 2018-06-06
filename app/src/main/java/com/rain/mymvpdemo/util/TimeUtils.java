@@ -1,5 +1,9 @@
 package com.rain.mymvpdemo.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Author:rain
  * Date:2018/6/4 11:09
@@ -25,5 +29,10 @@ public class TimeUtils {
                 return ""+minute + second;
             }
         }
+    }
+
+    public static String simpleDateFormat(Long time){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("- MMM. dd, 'Brunch' -", Locale.ENGLISH);
+        return dateFormat.format(time);
     }
 }

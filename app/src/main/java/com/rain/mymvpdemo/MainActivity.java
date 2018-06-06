@@ -79,7 +79,6 @@ public class MainActivity extends BaseActivity {
         hideFragment(ft);
         switch (index) {
             case HOME_TAB:
-//                toolbar.setTitle("新闻");
                 if (homeTabView == null) {
                     homeTabView = HomeTabView.newInstance();
                     ft.add(R.id.container, homeTabView, HomeTabView.class.getSimpleName());
@@ -89,7 +88,6 @@ public class MainActivity extends BaseActivity {
                 break;
 
             case DISCOVERY_TAB:
-//                toolbar.setTitle("图片");
                 if (discoveryTabView == null) {
                     discoveryTabView = DiscoveryTabView.newInstance();
                     ft.add(R.id.container, discoveryTabView, DiscoveryTabView.class.getSimpleName());
@@ -99,7 +97,6 @@ public class MainActivity extends BaseActivity {
                 break;
 
             case MY_TAB:
-//                toolbar.setTitle("视频");
                 if (myTabView == null) {
                     myTabView = MineTabView.newInstance();
                     ft.add(R.id.container, myTabView, MineTabView.class.getSimpleName());
@@ -130,6 +127,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initBottomNavigation() {
+        bottomNavigation.enableItemShiftingMode(false);
         bottomNavigation.enableShiftingMode(false);
     }
 
@@ -154,6 +152,11 @@ public class MainActivity extends BaseActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void loadData() {
+
     }
 
     @Override

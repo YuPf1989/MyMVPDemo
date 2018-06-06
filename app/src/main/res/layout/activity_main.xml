@@ -11,13 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_title_bg" />
+
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="@color/transparent"
         app:elevation="16dp"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"

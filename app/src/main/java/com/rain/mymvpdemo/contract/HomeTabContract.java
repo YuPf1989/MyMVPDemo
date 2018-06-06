@@ -15,6 +15,9 @@ import java.util.List;
 public interface HomeTabContract {
     interface View extends IBaseListView {
         void setBannerData(List<HomeBean.IssueListBean.ItemListBean> bannerData);
+
+        // 数据当次请求完成，不代表数据全部加载完毕
+        void onLoadComplete();
     }
 
     interface Presenter extends IBasePresenter {

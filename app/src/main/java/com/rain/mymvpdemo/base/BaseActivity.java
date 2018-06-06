@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.classic.common.MultipleStatusView;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -22,6 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private static final String TAG  = BaseActivity.class.getSimpleName();
     private Unbinder bind;
+    protected MultipleStatusView mLayoutStatusView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,10 +38,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         bind = ButterKnife.bind(this);
 
         initViews(savedInstanceState);
-
+        initListener();
     }
 
+    private void initListener() {
+        if (mLayoutStatusView != null) {
+            mLayoutStatusView.setOnRetryClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadData();
+                }
+            });
+        }
+    }
 
+    // 开始请求数据
+    protected abstract void loadData();
 
     @Override
     protected void onDestroy() {

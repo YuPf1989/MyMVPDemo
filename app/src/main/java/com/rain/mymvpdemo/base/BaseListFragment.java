@@ -41,6 +41,9 @@ public abstract class BaseListFragment extends LazyLoadFragment implements Swipe
         initRecycler();
     }
 
+    protected abstract BaseQuickAdapter setAdapter();
+
+
     private void initRecycler() {
         recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         recycler.setHasFixedSize(true);
@@ -69,17 +72,12 @@ public abstract class BaseListFragment extends LazyLoadFragment implements Swipe
     }
 
     @Override
-    public void onShowNetError() {
-
-    }
-
-    @Override
     public void onSetAdapterData(List<?> list) {
         adapter.setNewData(list);
     }
 
     @Override
-    public void onShowNoMore() {
+    public void onLoadEnd() {
 
     }
 

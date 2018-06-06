@@ -19,5 +19,5 @@ public interface IBaseView {
     /**
      * 显示网络错误
      */
-    void onShowNetError();
+    void onShowNetError(String err_msg,int err_code);
 }

@@ -1,7 +1,6 @@
 package com.rain.mymvpdemo.net.MyObserver;
 
-import com.rain.mymvpdemo.MyApplication;
-import com.rain.mymvpdemo.net.Exception.ApiErrorHelper;
+import com.rain.mymvpdemo.net.Exception.ExceptionHandle;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -25,7 +24,7 @@ public abstract class MyObserver<T> implements Observer<T> {
     @Override
     public void onError(@NonNull Throwable e) {
         // 异常，统一交给该处理的类去处理
-        ApiErrorHelper.handleCommonError(MyApplication.getInstance(), e);
+        ExceptionHandle.handleException(e);
     }
 
     @Override

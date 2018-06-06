@@ -16,7 +16,7 @@ import java.util.List;
 public class DiscoveryTabView extends BaseListFragment {
     @Override
     public void fetchData() {
-
+        
     }
 
     @Override
@@ -45,6 +45,11 @@ public class DiscoveryTabView extends BaseListFragment {
 
     @Override
     public void onRefresh() {
+
+    }
+
+    @Override
+    public void onShowNetError(String err_msg, int err_code) {
 
     }
 }

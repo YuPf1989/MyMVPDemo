@@ -76,4 +76,9 @@ public class MainFragment extends BaseListFragment implements MyContract.View{
             recycler.smoothScrollToPosition(0);
         }
     }
+
+    @Override
+    public void onShowNetError(String err_msg, int err_code) {
+
+    }
 }

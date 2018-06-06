@@ -5,9 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.classic.common.MultipleStatusView;
+import com.rain.mymvpdemo.R;
+import com.rain.mymvpdemo.util.ToastUtil;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -23,6 +28,8 @@ public abstract class BaseFragment extends Fragment {
     protected View rootView;
     protected Context mContext;
     private Unbinder bind;
+    protected MultipleStatusView mLayoutStatusView;
+    private static final String TAG = "BaseFragment";
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -36,12 +43,8 @@ public abstract class BaseFragment extends Fragment {
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutId(), container, false);
         }
-
         bind = ButterKnife.bind(this, rootView);
-
         mContext = getContext();
-
-
         return rootView;
     }
 
@@ -49,7 +52,22 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(savedInstanceState);
+        initListener();
     }
+
+    private void initListener() {
+        if (mLayoutStatusView != null) {
+            // TODO: 2018/6/5  
+            mLayoutStatusView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fetchData();
+                }
+            });
+        }
+    }
+
+    public abstract void fetchData();
 
     @Override
     public void onDestroyView() {

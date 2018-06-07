@@ -2,7 +2,11 @@ package com.rain.mymvpdemo.mvp.model.api;
 
 
 
+import com.rain.mymvpdemo.mvp.model.entity.CategoryBean;
 import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
+import com.rain.mymvpdemo.mvp.model.entity.TabInfoBean;
+
+import java.util.ArrayList;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -34,29 +38,30 @@ public interface RetrofitService {
 //    @GET("v4/video/related?")
 //    fun getRelatedData(@Query("id") id: Long): Observable<HomeBean.Issue>
 //
-//    /**
-//     * 获取分类
-//     */
-//    @GET("v4/categories")
-//    fun getCategory(): Observable<ArrayList<CategoryBean>>
-//
-//    /**
-//     * 获取分类详情List
-//     */
-//    @GET("v4/categories/videoList?")
-//    fun getCategoryDetailList(@Query("id") id: Long): Observable<HomeBean.Issue>
-//
+
+    /**
+     * 获取分类
+     */
+    @GET("v4/categories")
+    Observable<ArrayList<CategoryBean>> getCategory();
+
+    /**
+     * 获取分类详情List
+     */
+    @GET("v4/categories/videoList?")
+    Observable<HomeBean.IssueListBean> getCategoryDetailList(@Query("id") Long id);
+
     /**
      * 获取更多的 Issue
      */
     @GET
     Observable<HomeBean.IssueListBean> getIssueData(@Url String url );
-//
-//    /**
-//     * 获取全部排行榜的Info（包括，title 和 Url）
-//     */
-//    @GET("v4/rankList")
-//    fun getRankList():Observable<TabInfoBean>
+
+    /**
+     * 获取全部排行榜的Info（包括，title 和 Url）
+     */
+    @GET("v4/rankList")
+    Observable<TabInfoBean> getRankList();
 //
 //    /**
 //     * 获取搜索信息

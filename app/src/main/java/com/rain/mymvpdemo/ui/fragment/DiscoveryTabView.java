@@ -40,11 +40,6 @@ public class DiscoveryTabView extends BaseFragment {
     List<String> titles = Arrays.asList("关注", "分类");
 
     @Override
-    public void fetchData() {
-
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_discovery_tab;
     }

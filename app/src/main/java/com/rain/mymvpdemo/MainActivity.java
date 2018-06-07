@@ -104,6 +104,15 @@ public class MainActivity extends BaseActivity {
                     ft.show(myTabView);
                 }
                 break;
+
+            case HOT_TAB:
+                if (hotTabView == null) {
+                    hotTabView = HotTabView.newInstance();
+                    ft.add(R.id.container, hotTabView, HotTabView.class.getSimpleName());
+                } else {
+                    ft.show(hotTabView);
+                }
+                break;
         }
         ft.commit();
     }
@@ -143,7 +152,7 @@ public class MainActivity extends BaseActivity {
                         showFragment(DISCOVERY_TAB);
                         break;
                     case R.id.action_hot:
-                        showFragment(DISCOVERY_TAB);
+                        showFragment(HOT_TAB);
                         break;
                     case R.id.action_mine:
                         showFragment(MY_TAB);

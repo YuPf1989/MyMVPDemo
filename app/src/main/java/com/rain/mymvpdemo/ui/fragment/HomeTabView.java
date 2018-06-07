@@ -72,7 +72,7 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
     }
 
     @Override
-    public void fetchData() {
+    public void start() {
         onShowLoading();
         presenter.doLoadData(num);
     }

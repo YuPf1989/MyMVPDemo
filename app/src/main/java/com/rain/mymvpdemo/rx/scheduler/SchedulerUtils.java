@@ -31,6 +31,4 @@ public class SchedulerUtils {
     public static @NonNull ObservableTransformer trampolineToMain() {
         return new BaseScheduler(Schedulers.trampoline(), AndroidSchedulers.mainThread());
     }
-
-
 }

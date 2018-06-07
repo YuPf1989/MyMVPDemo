@@ -1,60 +1,124 @@
 package com.rain.mymvpdemo.ui.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.classic.common.MultipleStatusView;
 import com.rain.mymvpdemo.R;
+import com.rain.mymvpdemo.base.BaseFragment;
 import com.rain.mymvpdemo.base.BaseListFragment;
+import com.rain.mymvpdemo.mvp.contract.HotContract;
+import com.rain.mymvpdemo.mvp.model.entity.TabInfoBean;
+import com.rain.mymvpdemo.mvp.presenter.HotPresenter;
+import com.rain.mymvpdemo.net.Exception.ErrorStatus;
+import com.rain.mymvpdemo.ui.adapter.DiscoveryTabAdapter;
+import com.rain.mymvpdemo.ui.widget.TabLayoutHelper;
+import com.rain.mymvpdemo.util.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Author:rain
  * Date:2018/5/15 9:33
  * Description:
  */
-public class HotTabView extends BaseListFragment {
-    @Override
-    public void fetchData() {
+public class HotTabView extends BaseFragment implements HotContract.View {
+    @BindView(R.id.title)
+    TextView title;
+    @BindView(R.id.tab)
+    TabLayout tab;
+    @BindView(R.id.viewpager)
+    ViewPager viewpager;
+    @BindView(R.id.multipleStatusView)
+    MultipleStatusView multipleStatusView;
+    Unbinder unbinder;
 
-    }
+    ArrayList<String> titles = new ArrayList<>();
+    ArrayList<Fragment> fragments = new ArrayList<>();
+    private HotPresenter presenter;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_home_tab;
+        return R.layout.fragment_hot_tab;
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        mLayoutStatusView = multipleStatusView;
+        title.setText("热门");
+        presenter = new HotPresenter();
+        presenter.attachView(this);
+    }
 
+    @Override
+    public void start() {
+        onShowLoading();
+        presenter.doLoadData();
     }
 
     public static HotTabView newInstance() {
         return new HotTabView();
     }
 
+
     @Override
-    public BaseQuickAdapter setAdapter() {
-        return null;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
     }
 
     @Override
-    public void onLoadComplete() {
-
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+        presenter.detachView();
     }
 
     @Override
-    public void setLoadMoreData(List<?> list) {
-
+    public void onShowLoading() {
+        multipleStatusView.showLoading();
     }
 
     @Override
-    public void onRefresh() {
-
+    public void onHideLoading() {
+        multipleStatusView.showContent();
     }
 
     @Override
-    public void onShowNetError(String err_msg, int err_code) {
+    public void onShowNetError(String msg, int err_code) {
+        ToastUtil.showToast(msg + ":" + err_code);
+        if (err_code == ErrorStatus.NETWORK_ERROR) {
+            mLayoutStatusView.showNoNetwork();
+        } else {
+            mLayoutStatusView.showError();
+        }
+    }
 
+    @Override
+    public void onSetData(TabInfoBean infoBean) {
+        onHideLoading();
+        List<TabInfoBean.TabInfo.TabListBean> tabList = infoBean.getTabInfo().getTabList();
+        for (TabInfoBean.TabInfo.TabListBean bean : tabList) {
+            titles.add(bean.getName());
+            fragments.add(RankFragment.newInstance(bean.getApiUrl()));
+        }
+        DiscoveryTabAdapter tabAdapter = new DiscoveryTabAdapter(getChildFragmentManager(), fragments, titles);
+        viewpager.setOffscreenPageLimit(2);
+        viewpager.setAdapter(tabAdapter);
+        tab.setupWithViewPager(viewpager);
     }
 }

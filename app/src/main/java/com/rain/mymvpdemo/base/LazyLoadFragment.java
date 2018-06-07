@@ -1,6 +1,7 @@
 package com.rain.mymvpdemo.base;
 
 import android.os.Bundle;
+import android.util.Log;
 
 /**
  * 当前fragment对用户第一次可见时加载数据
@@ -10,9 +11,11 @@ public abstract class LazyLoadFragment extends BaseFragment {
     // 初始化是否完成
     protected boolean isViewInitiated;
     // 用户是否可见
-    protected boolean isVisibleToUser  = true;
+    protected boolean isVisibleToUser;
     // 数据是否第一次初始化过
     protected boolean isDataInitiated;
+
+    private static final String TAG  = "LazyLoadFragment";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -53,7 +53,7 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initView(savedInstanceState);
         initListener();
-        fetchData();
+        start();
     }
 
     private void initListener() {
@@ -61,13 +61,15 @@ public abstract class BaseFragment extends Fragment {
             mLayoutStatusView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    fetchData();
+                    start();
                 }
             });
         }
     }
 
-    public abstract void fetchData();
+    public  void start(){
+
+    }
 
     @Override
     public void onDestroyView() {

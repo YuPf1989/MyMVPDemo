@@ -170,7 +170,7 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
 
     @Override
     public void onLoadEnd() {
-
+        homeAdapter.loadMoreEnd();
     }
 
     @Override
@@ -185,19 +185,13 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
 
     @Override
     public void onSetAdapterData(List<?> list) {
-        // TODO: 2018/6/5  
-        mLayoutStatusView.showContent();
+        multipleStatusView.showContent();
         homeAdapter.setNewData((List<HomeBean.IssueListBean.ItemListBean>) list);
     }
 
     @Override
     public void onShowLoading() {
-        swipe.post(new Runnable() {
-            @Override
-            public void run() {
-                swipe.autoRefresh();
-            }
-        });
+        multipleStatusView.showLoading();
     }
 
     @Override
@@ -213,12 +207,16 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
     @Override
     public void onShowNetError(String msg, int err_code) {
         ToastUtil.showToast(msg + ":" + err_code);
-        homeAdapter.loadMoreFail();
         if (err_code == ErrorStatus.NETWORK_ERROR) {
             mLayoutStatusView.showNoNetwork();
         } else {
             mLayoutStatusView.showError();
         }
+    }
+
+    @Override
+    public void onLoadMoreFail(String err_msg, int err_code) {
+        homeAdapter.loadMoreFail();
     }
 
     @Override

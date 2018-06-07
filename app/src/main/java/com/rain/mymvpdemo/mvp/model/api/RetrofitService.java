@@ -46,11 +46,11 @@ public interface RetrofitService {
 //    @GET("v4/categories/videoList?")
 //    fun getCategoryDetailList(@Query("id") id: Long): Observable<HomeBean.Issue>
 //
-//    /**
-//     * 获取更多的 Issue
-//     */
-//    @GET
-//    fun getIssueData(@Url url: String): Observable<HomeBean.Issue>
+    /**
+     * 获取更多的 Issue
+     */
+    @GET
+    Observable<HomeBean.IssueListBean> getIssueData(@Url String url );
 //
 //    /**
 //     * 获取全部排行榜的Info（包括，title 和 Url）
@@ -70,11 +70,11 @@ public interface RetrofitService {
 //    @GET("v3/queries/hot")
 //    fun getHotWord():Observable<ArrayList<String>>
 //
-//    /**
-//     * 关注
-//     */
-//    @GET("v4/tabs/follow")
-//    fun getFollowInfo():Observable<HomeBean.Issue>
+    /**
+     * 关注
+     */
+    @GET("v4/tabs/follow")
+    Observable<HomeBean.IssueListBean> getFollowInfo();
 //
 //    /**
 //     * 作者信息

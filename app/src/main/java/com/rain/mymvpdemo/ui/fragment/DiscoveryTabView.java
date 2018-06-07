@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseFragment;
 import com.rain.mymvpdemo.ui.adapter.DiscoveryTabAdapter;
+import com.rain.mymvpdemo.ui.widget.TabLayoutHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,6 +57,7 @@ public class DiscoveryTabView extends BaseFragment {
         DiscoveryTabAdapter tabAdapter = new DiscoveryTabAdapter(getChildFragmentManager(), fragments, titles);
         viewpager.setAdapter(tabAdapter);
         tab.setupWithViewPager(viewpager);
+        TabLayoutHelper.setUpIndicatorWidth(tab);
     }
 
     public static DiscoveryTabView newInstance() {

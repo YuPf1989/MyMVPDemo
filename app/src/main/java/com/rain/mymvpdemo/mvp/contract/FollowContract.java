@@ -11,18 +11,13 @@ import java.util.List;
  * Date:2018/5/31 11:53
  * Description:
  */
-public interface HomeTabContract {
+public interface FollowContract {
     interface View extends IBaseListView {
-        void setBannerData(List<HomeBean.IssueListBean.ItemListBean> bannerData);
-
-        void onLoadMoreFail(String err_msg,int err_code);
-
+        void onLoadMoreError(String err_msg,int err_code);
     }
 
     interface Presenter extends IBasePresenter {
-        void doLoadData(int num);
-        void doRefresh();
+        void doLoadData();
         void doLoadMoreData();
     }
-
 }

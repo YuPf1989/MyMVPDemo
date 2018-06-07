@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
  * 修改tablayout的indicator的长度
  */
 public class TabLayoutHelper {
-    private void setUpIndicatorWidth(TabLayout tabLayout) {
+    public static void setUpIndicatorWidth(TabLayout tabLayout) {
         int marginLeft = 50;
         int marginRight = 50;
         Class<?> tabLayoutClass = tabLayout.getClass();

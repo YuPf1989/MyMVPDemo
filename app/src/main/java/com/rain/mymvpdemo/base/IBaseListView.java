@@ -21,5 +21,8 @@ public interface IBaseListView extends IBaseView {
      */
     void onLoadEnd();
 
+    // 数据当次请求完成，不代表数据全部加载完毕
+    void onLoadComplete();
+
     void setLoadMoreData(List<?> list);
 }

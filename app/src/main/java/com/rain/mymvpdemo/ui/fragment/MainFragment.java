@@ -33,6 +33,11 @@ public class MainFragment extends BaseListFragment implements MyContract.View{
     }
 
     @Override
+    public void onLoadComplete() {
+
+    }
+
+    @Override
     public void setLoadMoreData(List<?> list) {
 
     }

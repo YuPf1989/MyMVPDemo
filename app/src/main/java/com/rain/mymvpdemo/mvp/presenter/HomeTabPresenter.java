@@ -68,6 +68,7 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
                                 iterator.remove();
                             }
                         }
+                        view.onHideLoading();
                         ((HomeTabContract.View) view).onSetAdapterData(newBannerList);
                     }
                 }, new Consumer<Throwable>() {
@@ -82,6 +83,9 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
 
     @Override
     public void doLoadMoreData() {
+        if (nextPageUrl == null) {
+            ((HomeTabContract.View) view).onLoadEnd();
+        }
         Disposable disposable = HomeModel.loadMoreData(nextPageUrl)
                 .subscribe(new Consumer<HomeBean>() {
                     @Override
@@ -103,7 +107,7 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         view.onHideLoading();
-                        view.onShowNetError(ExceptionHandle.handleException(throwable),ExceptionHandle.getErrorCode());
+                        ((HomeTabContract.View) view).onLoadMoreFail(ExceptionHandle.handleException(throwable),ExceptionHandle.getErrorCode());
                     }
                 });
         this.addSubscription(disposable);

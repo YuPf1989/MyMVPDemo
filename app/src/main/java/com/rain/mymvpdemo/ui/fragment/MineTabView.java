@@ -39,6 +39,11 @@ public class MineTabView extends BaseListFragment {
     }
 
     @Override
+    public void onLoadComplete() {
+
+    }
+
+    @Override
     public void setLoadMoreData(List<?> list) {
 
     }

@@ -50,13 +50,21 @@ public class HomeBean {
 
     public static class IssueListBean {
 
-
+        private String nextPageUrl;
         private int count;
         private long date;
         private long publishTime;
         private long releaseTime;
         private String type;
         private List<ItemListBean> itemList;
+
+        public String getNextPageUrl() {
+            return nextPageUrl;
+        }
+
+        public void setNextPageUrl(String nextPageUrl) {
+            this.nextPageUrl = nextPageUrl;
+        }
 
         public int getCount() {
             return count;
@@ -190,8 +198,30 @@ public class HomeBean {
                 private List<?> subtitles;
                 private List<TagsBean> tags;
 
-                // todo 该bean的字段包含了各种类型的所有字段
+                // follow list中的字段
+                private HeaderBean header;
+
+
+
+                private List<ItemListBean> itemList;
+
                 private String text; // 针对type类型为textHeader的字段
+
+                public HeaderBean getHeader() {
+                    return header;
+                }
+
+                public void setHeader(HeaderBean header) {
+                    this.header = header;
+                }
+
+                public List<ItemListBean> getItemList() {
+                    return itemList;
+                }
+
+                public void setItemList(List<ItemListBean> itemList) {
+                    this.itemList = itemList;
+                }
 
                 public String getText() {
                     return text;
@@ -447,6 +477,149 @@ public class HomeBean {
 
                 public void setTags(List<TagsBean> tags) {
                     this.tags = tags;
+                }
+
+                // followList中添加的字段
+                public static class HeaderBean {
+                    /**
+                     * id : 1843
+                     * icon : http://img.kaiyanapp.com/c6f75c129885b6c1592331734af13549.png?imageMogr2/quality/60/format/jpg
+                     * iconType : round
+                     * title : 四人厨
+                     * subTitle : null
+                     * description : 在这里总有一款美食适合你，其食很简单！
+                     * actionUrl : eyepetizer://pgc/detail/1843/?title=%E5%9B%9B%E4%BA%BA%E5%8E%A8&userType=PGC&tabIndex=1
+                     * adTrack : null
+                     * follow : {"itemType":"author","itemId":1843,"followed":false}
+                     * ifPgc : true
+                     */
+
+                    private int id;
+                    private String icon;
+                    private String iconType;
+                    private String title;
+                    private String subTitle;
+                    private String description;
+                    private String actionUrl;
+                    private String adTrack;
+                    private FollowBean follow;
+                    private boolean ifPgc;
+
+                    public int getId() {
+                        return id;
+                    }
+
+                    public void setId(int id) {
+                        this.id = id;
+                    }
+
+                    public String getIcon() {
+                        return icon;
+                    }
+
+                    public void setIcon(String icon) {
+                        this.icon = icon;
+                    }
+
+                    public String getIconType() {
+                        return iconType;
+                    }
+
+                    public void setIconType(String iconType) {
+                        this.iconType = iconType;
+                    }
+
+                    public String getTitle() {
+                        return title;
+                    }
+
+                    public void setTitle(String title) {
+                        this.title = title;
+                    }
+
+                    public String getSubTitle() {
+                        return subTitle;
+                    }
+
+                    public void setSubTitle(String subTitle) {
+                        this.subTitle = subTitle;
+                    }
+
+                    public String getDescription() {
+                        return description;
+                    }
+
+                    public void setDescription(String description) {
+                        this.description = description;
+                    }
+
+                    public String getActionUrl() {
+                        return actionUrl;
+                    }
+
+                    public void setActionUrl(String actionUrl) {
+                        this.actionUrl = actionUrl;
+                    }
+
+                    public String getAdTrack() {
+                        return adTrack;
+                    }
+
+                    public void setAdTrack(String adTrack) {
+                        this.adTrack = adTrack;
+                    }
+
+                    public FollowBean getFollow() {
+                        return follow;
+                    }
+
+                    public void setFollow(FollowBean follow) {
+                        this.follow = follow;
+                    }
+
+                    public boolean isIfPgc() {
+                        return ifPgc;
+                    }
+
+                    public void setIfPgc(boolean ifPgc) {
+                        this.ifPgc = ifPgc;
+                    }
+
+                    public static class FollowBean {
+                        /**
+                         * itemType : author
+                         * itemId : 1843
+                         * followed : false
+                         */
+
+                        private String itemType;
+                        private int itemId;
+                        private boolean followed;
+
+                        public String getItemType() {
+                            return itemType;
+                        }
+
+                        public void setItemType(String itemType) {
+                            this.itemType = itemType;
+                        }
+
+                        public int getItemId() {
+                            return itemId;
+                        }
+
+                        public void setItemId(int itemId) {
+                            this.itemId = itemId;
+                        }
+
+                        public boolean isFollowed() {
+                            return followed;
+                        }
+
+                        public void setFollowed(boolean followed) {
+                            this.followed = followed;
+                        }
+                    }
                 }
 
                 public static class AuthorBean {

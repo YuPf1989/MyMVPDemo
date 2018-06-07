@@ -3,6 +3,8 @@ package com.rain.mymvpdemo.ui.adapter;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rain.mymvpdemo.R;
@@ -24,9 +26,6 @@ public class HomeAdapter extends BaseMultiItemQuickAdapter<HomeBean.IssueListBea
         addItemType(HomeBean.IssueListBean.ItemListBean.type_video, R.layout.item_home_content);
         addItemType(HomeBean.IssueListBean.ItemListBean.type_textHeader, R.layout.item_home_header);
     }
-
-
-
     @Override
     protected void convert(BaseViewHolder helper, HomeBean.IssueListBean.ItemListBean item) {
         HomeBean.IssueListBean.ItemListBean.DataBean itemData = item.getData();
@@ -39,6 +38,7 @@ public class HomeAdapter extends BaseMultiItemQuickAdapter<HomeBean.IssueListBea
                 // 加载封页
                 GlideApp.with(mContext)
                         .load(itemData.getCover().getFeed())
+                        .transition(DrawableTransitionOptions.withCrossFade())
                         .placeholder(R.drawable.placeholder_banner)
                         .into((ImageView) helper.getView(R.id.iv_cover_feed));
                 // 加载用户图标

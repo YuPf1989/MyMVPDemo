@@ -39,6 +39,11 @@ public class HotTabView extends BaseListFragment {
     }
 
     @Override
+    public void onLoadComplete() {
+
+    }
+
+    @Override
     public void setLoadMoreData(List<?> list) {
 
     }

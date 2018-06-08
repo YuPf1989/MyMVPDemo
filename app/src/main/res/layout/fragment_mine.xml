@@ -169,6 +169,8 @@
                 android:gravity="center|center_horizontal"
                 android:text="@string/feedback"
                 android:textSize="14sp" />
+
+
         </LinearLayout>
 
 

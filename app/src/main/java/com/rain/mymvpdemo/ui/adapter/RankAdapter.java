@@ -32,7 +32,7 @@ public class RankAdapter extends BaseQuickAdapter<HomeBean.IssueListBean.ItemLis
         // 设置标题
         helper.setText(R.id.tv_title, data.getTitle());
         // 设置描述
-        String time = TimeUtils.durationFormat(data.getDate());
+        String time = TimeUtils.durationFormat(data.getDuration());
         String category = data.getCategory();
         helper.setText(R.id.tv_tag, "#"+category+"/"+time);
         // 封面

@@ -76,6 +76,9 @@ dependencies {
     // 多种视图显示
     implementation 'com.classic.common:multiple-status-view:1.4'
 
+    // 圆形imageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 
 
 

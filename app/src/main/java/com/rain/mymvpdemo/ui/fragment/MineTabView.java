@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rain.mymvpdemo.R;
+import com.rain.mymvpdemo.base.BaseFragment;
 import com.rain.mymvpdemo.base.BaseListFragment;
 
 import java.util.List;
@@ -13,15 +14,12 @@ import java.util.List;
  * Date:2018/5/15 9:33
  * Description:
  */
-public class MineTabView extends BaseListFragment {
-    @Override
-    public void fetchData() {
+public class MineTabView extends BaseFragment {
 
-    }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_home_tab;
+        return R.layout.fragment_mine;
     }
 
     @Override
@@ -31,30 +29,5 @@ public class MineTabView extends BaseListFragment {
 
     public static MineTabView newInstance() {
         return new MineTabView();
-    }
-
-    @Override
-    public BaseQuickAdapter setAdapter() {
-        return null;
-    }
-
-    @Override
-    public void onLoadComplete() {
-
-    }
-
-    @Override
-    public void setLoadMoreData(List<?> list) {
-
-    }
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    @Override
-    public void onShowNetError(String err_msg, int err_code) {
-
     }
 }

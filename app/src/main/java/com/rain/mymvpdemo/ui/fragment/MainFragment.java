@@ -55,7 +55,6 @@ public class MainFragment extends BaseListFragment implements MyContract.View{
 
     @Override
     public void fetchData() {
-        super.fetchData();
         onShowLoading();
         presenter.doLoadData();
     }

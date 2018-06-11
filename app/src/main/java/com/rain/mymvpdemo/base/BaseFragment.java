@@ -61,13 +61,17 @@ public abstract class BaseFragment extends Fragment {
             mLayoutStatusView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    start();
+                    refreshData();
                 }
             });
         }
     }
 
-    public  void start(){
+    protected void refreshData() {
+
+    }
+
+    protected void start() {
 
     }
 

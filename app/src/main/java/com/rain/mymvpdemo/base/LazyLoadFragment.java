@@ -54,6 +54,8 @@ public abstract class LazyLoadFragment extends BaseFragment {
         return false;
     }
 
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

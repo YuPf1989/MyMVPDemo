@@ -77,6 +77,12 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
         presenter.doLoadData(num);
     }
 
+    // 这是网络出现问题时，点击刷新
+    @Override
+    protected void refreshData() {
+        start();
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -238,6 +244,7 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
         homeAdapter.loadMoreComplete();
     }
 
+    // 这个是下拉刷新
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         presenter.doLoadData(1);

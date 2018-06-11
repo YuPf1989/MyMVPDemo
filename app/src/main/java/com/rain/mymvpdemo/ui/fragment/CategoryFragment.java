@@ -67,6 +67,11 @@ public class CategoryFragment extends LazyLoadFragment implements CategoryContra
     }
 
     @Override
+    protected void refreshData() {
+        fetchData();
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.layout_recyclerview;
     }

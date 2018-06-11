@@ -71,6 +71,11 @@ public class RankFragment extends LazyLoadFragment implements RankContract.View 
     }
 
     @Override
+    protected void refreshData() {
+        fetchData();
+    }
+
+    @Override
     public void onSetAdapterData(List<?> list) {
         onHideLoading();
         adapter.setNewData((List<HomeBean.IssueListBean.ItemListBean>) list);

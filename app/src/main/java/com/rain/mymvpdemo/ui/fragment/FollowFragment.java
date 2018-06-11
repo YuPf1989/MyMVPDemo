@@ -49,6 +49,11 @@ public class FollowFragment extends LazyLoadFragment implements FollowContract.V
     }
 
     @Override
+    protected void refreshData() {
+        fetchData();
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.layout_recyclerview;
     }

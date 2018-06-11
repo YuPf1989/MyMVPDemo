@@ -69,6 +69,11 @@ public class HotTabView extends BaseFragment implements HotContract.View {
         presenter.doLoadData();
     }
 
+    @Override
+    protected void refreshData() {
+        start();
+    }
+
     public static HotTabView newInstance() {
         return new HotTabView();
     }

@@ -57,7 +57,7 @@ public class VideoDetailAdapter extends BaseMultiItemQuickAdapter<HomeBean.Issue
         // 标签
         String duratuion = TimeUtils.durationFormat(data.getDuration());
         helper.setText(R.id.tv_tag, "#" + data.getCategory() + "/" + duratuion);
-        //喜欢
+        //喜欢ni
         helper.setText(R.id.tv_action_favorites, data.getConsumption().getCollectionCount() + "");
         //分享
         helper.setText(R.id.tv_action_share, data.getConsumption().getShareCount() + "");

@@ -79,6 +79,9 @@ dependencies {
     // 圆形imageView
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
+    // 视屏播放器
+    implementation 'com.shuyu:GSYVideoPlayer:4.1.0'
+
 
 
 

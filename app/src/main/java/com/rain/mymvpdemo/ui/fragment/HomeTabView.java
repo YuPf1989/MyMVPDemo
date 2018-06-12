@@ -127,7 +127,7 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
     private void initRecycler() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
-        homeAdapter = new HomeAdapter(null);
+        homeAdapter = new HomeAdapter(null,getActivity());
         homeAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         recyclerView.setAdapter(homeAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

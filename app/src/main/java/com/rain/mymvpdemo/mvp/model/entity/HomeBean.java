@@ -2,6 +2,7 @@ package com.rain.mymvpdemo.mvp.model.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -114,7 +115,8 @@ public class HomeBean {
             this.itemList = itemList;
         }
 
-        public static class ItemListBean implements MultiItemEntity {
+        // note:其嵌套的所有实体类都必须实现Serializable
+        public static class ItemListBean implements MultiItemEntity,Serializable {
 
             private int adIndex;
             private DataBean data;
@@ -123,6 +125,9 @@ public class HomeBean {
 
             public static final int type_textHeader = 0;
             public static final int type_video = 1;
+            public static final int type_video_text_card = 2;
+            public static final int type_video_small_card = 3;
+            public static final int type_video_detail_info = 4;
 
             public int getAdIndex() {
                 return adIndex;
@@ -161,10 +166,19 @@ public class HomeBean {
                 if ("textHeader".equals(type)) {
                     return type_textHeader;
                 }
-                return type_video;
+                if ("video".equals(type)) {
+                    return type_video;
+                }
+                if ("textCard".equals(type)) {
+                    return type_video_text_card;
+                }
+                if ("videoSmallCard".equals(type)) {
+                    return type_video_small_card;
+                }
+                return -1;
             }
 
-            public static class DataBean {
+            public static class DataBean implements Serializable{
 
                 private AuthorBean author;
                 private String category;
@@ -480,7 +494,7 @@ public class HomeBean {
                 }
 
                 // followList中添加的字段
-                public static class HeaderBean {
+                public static class HeaderBean implements Serializable{
                     /**
                      * id : 1843
                      * icon : http://img.kaiyanapp.com/c6f75c129885b6c1592331734af13549.png?imageMogr2/quality/60/format/jpg
@@ -585,7 +599,7 @@ public class HomeBean {
                         this.ifPgc = ifPgc;
                     }
 
-                    public static class FollowBean {
+                    public static class FollowBean implements Serializable{
                         /**
                          * itemType : author
                          * itemId : 1843
@@ -622,7 +636,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class AuthorBean {
+                public static class AuthorBean implements Serializable{
 
                     private int approvedNotReadyVideoCount;
                     private String description;
@@ -724,7 +738,7 @@ public class HomeBean {
                         this.videoNum = videoNum;
                     }
 
-                    public static class FollowBean {
+                    public static class FollowBean implements Serializable{
 
                         private boolean followed;
                         private int itemId;
@@ -755,7 +769,7 @@ public class HomeBean {
                         }
                     }
 
-                    public static class ShieldBean {
+                    public static class ShieldBean implements Serializable{
 
                         private int itemId;
                         private String itemType;
@@ -787,7 +801,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class ConsumptionBean {
+                public static class ConsumptionBean implements Serializable{
                     private int collectionCount;
                     private int replyCount;
                     private int shareCount;
@@ -817,7 +831,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class CoverBean {
+                public static class CoverBean implements Serializable{
                     private String blurred;
                     private String detail;
                     private String feed;
@@ -856,7 +870,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class ProviderBean {
+                public static class ProviderBean implements Serializable{
 
                     private String alias;
                     private String icon;
@@ -887,7 +901,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class WebUrlBean {
+                public static class WebUrlBean implements Serializable{
                     private String forWeibo;
                     private String raw;
 
@@ -908,7 +922,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class PlayInfoBean {
+                public static class PlayInfoBean implements Serializable{
 
                     private int height;
                     private String name;
@@ -965,7 +979,7 @@ public class HomeBean {
                         this.urlList = urlList;
                     }
 
-                    public static class UrlListBean {
+                    public static class UrlListBean implements Serializable{
 
                         private String name;
                         private int size;
@@ -997,7 +1011,7 @@ public class HomeBean {
                     }
                 }
 
-                public static class TagsBean {
+                public static class TagsBean implements Serializable{
 
                     private String actionUrl;
                     private String bgPicture;

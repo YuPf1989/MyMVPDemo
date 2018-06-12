@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.ProfileHomePageActivity" />
+        <activity android:name=".ui.activity.VideoDetailActivity" />
     </application>
 
 

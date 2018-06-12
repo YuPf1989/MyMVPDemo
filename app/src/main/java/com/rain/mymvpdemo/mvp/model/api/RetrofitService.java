@@ -32,12 +32,11 @@ public interface RetrofitService {
     @GET
     Observable<HomeBean> getMoreHomeData(@Url String url);
 
-//    /**
-//     * 根据item id获取相关视频
-//     */
-//    @GET("v4/video/related?")
-//    fun getRelatedData(@Query("id") id: Long): Observable<HomeBean.Issue>
-//
+    /**
+     * 根据item id获取相关视频
+     */
+    @GET("v4/video/related?")
+    Observable<HomeBean.IssueListBean> getRelatedData(@Query("id") Long id);
 
     /**
      * 获取分类

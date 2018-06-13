@@ -127,7 +127,6 @@ public class HomeBean {
             public static final int type_video = 1;
             public static final int type_video_text_card = 2;
             public static final int type_video_small_card = 3;
-            public static final int type_video_detail_info = 4;
 
             public int getAdIndex() {
                 return adIndex;

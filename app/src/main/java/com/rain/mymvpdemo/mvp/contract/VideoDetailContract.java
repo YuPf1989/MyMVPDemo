@@ -24,6 +24,11 @@ public interface VideoDetailContract {
         void setVideoInfo(HomeBean.IssueListBean.ItemListBean videoInfo);
 
         void setRelatedVideo(List<HomeBean.IssueListBean.ItemListBean> videos);
+
+        /**
+         * 设置背景
+         */
+        void setBackground(String url);
     }
 
     interface Presenter extends IBasePresenter {

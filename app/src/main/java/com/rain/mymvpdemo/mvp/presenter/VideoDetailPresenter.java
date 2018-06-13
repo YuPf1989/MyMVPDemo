@@ -1,6 +1,8 @@
 package com.rain.mymvpdemo.mvp.presenter;
 
 import android.app.Activity;
+import android.content.Context;
+import android.hardware.display.DisplayManager;
 
 import com.rain.mymvpdemo.base.BasePresenter;
 import com.rain.mymvpdemo.base.IBasePresenter;
@@ -8,6 +10,7 @@ import com.rain.mymvpdemo.mvp.contract.VideoDetailContract;
 import com.rain.mymvpdemo.mvp.model.VideoDetailModel;
 import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 import com.rain.mymvpdemo.net.Exception.ExceptionHandle;
+import com.rain.mymvpdemo.util.DisplayUtil;
 import com.rain.mymvpdemo.util.NetworkUtils;
 
 import java.util.List;
@@ -43,6 +46,13 @@ public class VideoDetailPresenter extends BasePresenter implements VideoDetailCo
         } else { // 标清
             ((VideoDetailContract.View) view).setVideo(itemInfo.getData().getPlayUrl());
         }
+        // 设置背景
+        String backgroundUrl = itemInfo.getData().getCover().getBlurred()
+                + "/thumbnail/"
+                + (DisplayUtil.getScreenHeight((Context) view) - DisplayUtil.dip2px((Context) view, 250f))
+                + "x"
+                + DisplayUtil.getScreenWidth((Context) view);
+        ((VideoDetailContract.View) view).setBackground(backgroundUrl);
         ((VideoDetailContract.View) view).setVideoInfo(itemInfo);
     }
 
@@ -53,13 +63,15 @@ public class VideoDetailPresenter extends BasePresenter implements VideoDetailCo
                 .subscribe(new Consumer<HomeBean.IssueListBean>() {
                     @Override
                     public void accept(HomeBean.IssueListBean issueListBean) throws Exception {
+                        view.onHideLoading();
                         List<HomeBean.IssueListBean.ItemListBean> itemList = issueListBean.getItemList();
                         ((VideoDetailContract.View) view).setRelatedVideo(itemList);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        view.onShowNetError(ExceptionHandle.handleException(throwable),ExceptionHandle.getErrorCode());
+                        view.onHideLoading();
+                        view.onShowNetError(ExceptionHandle.handleException(throwable), ExceptionHandle.getErrorCode());
                     }
                 });
         this.addSubscription(disposable);

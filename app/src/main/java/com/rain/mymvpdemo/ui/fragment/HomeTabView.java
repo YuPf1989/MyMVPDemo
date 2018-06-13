@@ -1,6 +1,9 @@
 package com.rain.mymvpdemo.ui.fragment;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +22,7 @@ import com.rain.mymvpdemo.mvp.contract.HomeTabContract;
 import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 import com.rain.mymvpdemo.net.Exception.ErrorStatus;
 import com.rain.mymvpdemo.mvp.presenter.HomeTabPresenter;
+import com.rain.mymvpdemo.ui.activity.SearchActivity;
 import com.rain.mymvpdemo.ui.adapter.HomeAdapter;
 import com.rain.mymvpdemo.util.TimeUtils;
 import com.rain.mymvpdemo.util.ToastUtil;
@@ -186,7 +190,17 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
 
     @OnClick(R.id.search)
     public void onViewClicked() {
+        openSearchActivity();
+    }
 
+    private void openSearchActivity() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptionsCompat option = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), search, search.getTransitionName());
+            startActivity(new Intent(getActivity(), SearchActivity.class), option.toBundle());
+        } else {
+            startActivity(new Intent(getActivity(), SearchActivity.class));
+
+        }
     }
 
     @Override

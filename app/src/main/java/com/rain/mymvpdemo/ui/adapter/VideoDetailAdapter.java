@@ -20,6 +20,8 @@ import java.util.List;
  */
 public class VideoDetailAdapter extends BaseMultiItemQuickAdapter<HomeBean.IssueListBean.ItemListBean, BaseViewHolder> {
 
+    private HomeBean.IssueListBean.ItemListBean data;
+
     /**
      * Same as QuickAdapter#QuickAdapter(Context,int) but with
      * some initialization data.
@@ -44,7 +46,6 @@ public class VideoDetailAdapter extends BaseMultiItemQuickAdapter<HomeBean.Issue
             helper.setText(R.id.tv_title, item.getData().getTitle());
             String duratuion = TimeUtils.durationFormat(item.getData().getDuration());
             helper.setText(R.id.tv_tag, "#" + item.getData().getCategory() + "/" + duratuion);
-
         }
     }
 
@@ -75,5 +76,4 @@ public class VideoDetailAdapter extends BaseMultiItemQuickAdapter<HomeBean.Issue
             rootView.findViewById(R.id.layout_author_view).setVisibility(View.GONE);
         }
     }
-
 }

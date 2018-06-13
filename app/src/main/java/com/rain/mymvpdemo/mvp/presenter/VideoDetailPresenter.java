@@ -3,6 +3,7 @@ package com.rain.mymvpdemo.mvp.presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.display.DisplayManager;
+import android.util.Log;
 
 import com.rain.mymvpdemo.base.BasePresenter;
 import com.rain.mymvpdemo.base.IBasePresenter;
@@ -24,6 +25,7 @@ import io.reactivex.functions.Consumer;
  * Description:
  */
 public class VideoDetailPresenter extends BasePresenter implements VideoDetailContract.Presenter {
+    private static final String TAG  = "VideoDetailPresenter";
 
 
     // 加载视频相关数据

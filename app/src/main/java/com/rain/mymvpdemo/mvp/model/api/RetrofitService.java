@@ -61,19 +61,19 @@ public interface RetrofitService {
      */
     @GET("v4/rankList")
     Observable<TabInfoBean> getRankList();
-//
-//    /**
-//     * 获取搜索信息
-//     */
-//    @GET("v1/search?&num=10&start=10")
-//    fun getSearchData(@Query("query") query :String) : Observable<HomeBean.Issue>
-//
-//    /**
-//     * 热门搜索词
-//     */
-//    @GET("v3/queries/hot")
-//    fun getHotWord():Observable<ArrayList<String>>
-//
+
+    /**
+     * 获取搜索信息
+     */
+    @GET("v1/search?&num=10&start=10")
+    Observable<HomeBean.IssueListBean> getSearchData(@Query("query") String query);
+
+    /**
+     * 热门搜索词
+     */
+    @GET("v3/queries/hot")
+    Observable<ArrayList<String>> getHotWord();
+
     /**
      * 关注
      */

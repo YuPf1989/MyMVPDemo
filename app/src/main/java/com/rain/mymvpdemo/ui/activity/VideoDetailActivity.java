@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rain.mymvpdemo.Constants;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseActivity;
@@ -196,6 +197,16 @@ public class VideoDetailActivity extends BaseActivity implements VideoDetailCont
         // 显示下拉背景
         refreshHeader.setShowBezierWave(true);
         mRefreshLayout.setPrimaryColorsId(R.color.lineColor, R.color.color_title_bg);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                HomeBean.IssueListBean.ItemListBean data = (HomeBean.IssueListBean.ItemListBean) adapter.getData().get(position);
+                int itemType = data.getItemType();
+                if (HomeBean.IssueListBean.ItemListBean.type_video_small_card == itemType) {
+                    presenter.loadVideoInfo(data);
+                }
+            }
+        });
     }
 
     private void initTransition() {

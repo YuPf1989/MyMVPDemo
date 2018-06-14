@@ -18,20 +18,20 @@ public class TimeUtils {
         Long second = duration % 60;
         if (minute <= 9) {
             if (second <= 9) {
-                return "0" + minute + "0" + second;
+                return "0" + minute + "'0" + second + "\"";
             } else {
-                return "0" + minute + second;
+                return "0" + minute + "'" + second + "\"";
             }
         } else {
             if (second <= 9) {
-                return minute + "0" + second;
+                return minute + "'0" + second + "\"";
             } else {
-                return ""+minute + second;
+                return "" + minute + "'" + second + "\"";
             }
         }
     }
 
-    public static String simpleDateFormat(Long time){
+    public static String simpleDateFormat(Long time) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("- MMM. dd, 'Brunch' -", Locale.ENGLISH);
         return dateFormat.format(time);
     }

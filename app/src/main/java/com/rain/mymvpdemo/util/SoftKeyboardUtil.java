@@ -18,13 +18,15 @@ import java.util.List;
 public class SoftKeyboardUtil {
     /**
      * 隐藏软键盘(只适用于Activity，不适用于Fragment)
+     * InputMethodManager的几个常量值参见
+     * https://blog.csdn.net/taotao945mh2006/article/details/44238339
      */
     public static void hideSoftKeyboard(Activity activity) {
         View view = activity.getCurrentFocus();
         if (view != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
             assert inputMethodManager != null;
-            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
         }
     }
 
@@ -37,7 +39,6 @@ public class SoftKeyboardUtil {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
             assert inputMethodManager != null;
             inputMethodManager.showSoftInput(view, InputMethodManager.RESULT_SHOWN);
-            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         }
     }
 
@@ -51,7 +52,6 @@ public class SoftKeyboardUtil {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         assert inputMethodManager != null;
         inputMethodManager.showSoftInput(editText, InputMethodManager.RESULT_SHOWN);
-        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
     /**

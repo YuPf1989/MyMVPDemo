@@ -23,7 +23,10 @@
         <activity
             android:name=".ui.activity.VideoDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".ui.activity.SearchActivity" />
+        <!--adjustPan 使输入框不将布局顶上去-->
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

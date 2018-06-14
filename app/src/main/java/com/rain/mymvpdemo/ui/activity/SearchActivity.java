@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.transition.Fade;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -91,7 +92,7 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
     // multipleStatusView点击加载
     @Override
     protected void loadData() {
-        presenter.querySearchData(keyword);
+        presenter.requestHotWordData();
     }
 
     @Override
@@ -260,7 +261,7 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
     public void setSearchResult(HomeBean.IssueListBean issue) {
         hideHotWordView();
         tvSearchCount.setVisibility(View.VISIBLE);
-        tvSearchCount.setText(String.format(getResources().getString(R.string.search_result_count), keyword, issue.getCount()));
+        tvSearchCount.setText(String.format(getResources().getString(R.string.search_result_count), keyword, issue.getTotal()));
         List<HomeBean.IssueListBean.ItemListBean> itemList = issue.getItemList();
         searchResultAdapter.setNewData(itemList);
     }
@@ -277,7 +278,7 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
         ToastUtil.showToast("抱歉，没有找到相匹配的内容");
         hideHotWordView();
         tvSearchCount.setVisibility(View.GONE);
-        multipleStatusView.showEmpty();
+        mLayoutStatusView.showEmpty();
     }
 
     @Override
@@ -329,7 +330,28 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
 
     @Override
     public void onBackPressed() {
-        // 关闭软键盘
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ViewAnimUtils.animateRevealHide(
+                    this, relFrame,
+                    fabCircle.getWidth() / 2, R.color.background,
+                    new ViewAnimUtils.OnRevealAnimationListener() {
+
+                        @Override
+                        public void onRevealHide() {
+                            defaultOnBackPressed();
+                        }
+
+                        @Override
+                        public void onRevealShow() {
+                        }
+                    });
+        } else {
+            defaultOnBackPressed();
+        }
+    }
+
+    // 关闭软键盘同时关闭当前界面
+    private void defaultOnBackPressed() {
         SoftKeyboardUtil.hideSoftKeyboard(this);
         super.onBackPressed();
     }

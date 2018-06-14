@@ -59,6 +59,16 @@ public class HomeBean {
         private String type;
         private List<ItemListBean> itemList;
 
+        public int getTotal() {
+            return total;
+        }
+
+        public void setTotal(int total) {
+            this.total = total;
+        }
+
+        private int total;
+
         public String getNextPageUrl() {
             return nextPageUrl;
         }

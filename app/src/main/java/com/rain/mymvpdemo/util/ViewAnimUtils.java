@@ -68,7 +68,7 @@ public class ViewAnimUtils {
         double initialRadius = view.getWidth();
 
         // 设置圆形显示动画
-        Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, finalRadius, (float) initialRadius);
+        Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, (float) initialRadius, finalRadius);
         anim.setDuration(300);
         anim.setInterpolator(new AccelerateDecelerateInterpolator());
         anim.addListener(new AnimatorListenerAdapter() {

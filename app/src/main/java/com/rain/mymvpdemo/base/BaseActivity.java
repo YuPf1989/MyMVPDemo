@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -43,7 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initListener() {
         if (mLayoutStatusView != null) {
-            mLayoutStatusView.setOnRetryClickListener(new View.OnClickListener() {
+            mLayoutStatusView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     loadData();

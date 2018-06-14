@@ -11,4 +11,7 @@
     <string name="mine_cache">我的缓存</string>
     <string name="view_history">观看记录</string>
     <string name="feedback">意见反馈</string>
+
+    <string name="search_result_count">-「%1$s」搜索结果共%2$d个-</string>
+
 </resources>

@@ -16,5 +16,4 @@ public interface IBasePresenter<V extends IBaseView> {
      */
     void detachView();
 
-
 }

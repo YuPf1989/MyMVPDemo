@@ -64,7 +64,9 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="24dp"
-                        android:src="@drawable/ic_action_search_black" />
+                        android:src="@drawable/ic_action_search_black"
+                        android:transitionName="transition_reveal"
+                        />
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
         </FrameLayout>

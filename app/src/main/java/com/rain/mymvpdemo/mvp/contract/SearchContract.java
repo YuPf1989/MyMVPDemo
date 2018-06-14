@@ -2,6 +2,7 @@ package com.rain.mymvpdemo.mvp.contract;
 
 import com.rain.mymvpdemo.base.IBasePresenter;
 import com.rain.mymvpdemo.base.IBaseView;
+import com.rain.mymvpdemo.base.ILoadMoreView;
 import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * Description:
  */
 public interface SearchContract {
-    interface View extends IBaseView {
+    interface View extends IBaseView,ILoadMoreView {
         /**
          * 设置热门关键词数据
          */
@@ -24,17 +25,10 @@ public interface SearchContract {
         void setSearchResult(HomeBean.IssueListBean issue);
 
         /**
-         * 关闭软件盘
-         */
-        void closeSoftKeyboard();
-
-        /**
          * 设置空 View
          */
         void setEmptyView();
 
-
-        void showError(String errorMsg, int errorCode);
     }
 
     interface Presenter extends IBasePresenter {

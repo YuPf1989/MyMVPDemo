@@ -82,6 +82,8 @@ dependencies {
     // 视屏播放器
     implementation 'com.shuyu:GSYVideoPlayer:4.1.0'
 
+    // 谷歌开源的流式布局
+    implementation 'com.google.android:flexbox:1.0.0'
 
 
 

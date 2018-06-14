@@ -25,4 +25,10 @@ public class SearchModel {
                 .getHotWord()
                 .compose(SchedulerUtils.ioToMain());
     }
+
+    public static Observable<HomeBean.IssueListBean> loadMoreData(String url) {
+        return RetrofitHelper.getInstance().getRetrofitService()
+                .getIssueData(url)
+                .compose(SchedulerUtils.ioToMain());
+    }
 }

@@ -59,6 +59,22 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    // TODO: 2018/6/19 不使用第三方的沉浸式
+    @Override
+    protected boolean isImmersionBarEnabled() {
+        return false;
+    }
+
+    @Override
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+        immersionBar.statusBarView(R.id.top_view)
+                .navigationBarColor(R.color.colorPrimary)
+                .fullScreen(true)
+                .addTag("PicAndColor")  //给上面参数打标记，以后可以通过标记恢复
+                .init();
+    }
+
     // 主要是为了处理屏幕旋转或者程序异常恢复时候用
     @Override
     protected void onSaveInstanceState(Bundle outState) {

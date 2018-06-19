@@ -2,6 +2,7 @@ package com.rain.mymvpdemo.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseFragment;
 import com.rain.mymvpdemo.ui.activity.ProfileHomePageActivity;
+import com.rain.mymvpdemo.util.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,6 +49,9 @@ public class MineTabView extends BaseFragment {
     TextView tvWatchHistory;
     @BindView(R.id.tv_feedback)
     TextView tvFeedback;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     Unbinder unbinder;
 
     @Override
@@ -56,7 +61,9 @@ public class MineTabView extends BaseFragment {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        // 状态栏透明和间距处理
+        StatusBarUtil.darkMode(getActivity());
+        StatusBarUtil.setPaddingSmart(getActivity(), toolbar);
     }
 
     public static MineTabView newInstance() {

@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.rain.mymvpdemo.mvp.presenter.HotPresenter;
 import com.rain.mymvpdemo.net.Exception.ErrorStatus;
 import com.rain.mymvpdemo.ui.adapter.DiscoveryTabAdapter;
 import com.rain.mymvpdemo.ui.widget.TabLayoutHelper;
+import com.rain.mymvpdemo.util.StatusBarUtil;
 import com.rain.mymvpdemo.util.ToastUtil;
 
 import java.util.ArrayList;
@@ -44,6 +46,8 @@ public class HotTabView extends BaseFragment implements HotContract.View {
     ViewPager viewpager;
     @BindView(R.id.multipleStatusView)
     MultipleStatusView multipleStatusView;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     Unbinder unbinder;
 
     ArrayList<String> titles = new ArrayList<>();
@@ -57,6 +61,9 @@ public class HotTabView extends BaseFragment implements HotContract.View {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        // 状态栏透明和间距处理
+        StatusBarUtil.darkMode(getActivity());
+        StatusBarUtil.setPaddingSmart(getActivity(), toolbar);
         mLayoutStatusView = multipleStatusView;
         title.setText("热门");
         presenter = new HotPresenter();

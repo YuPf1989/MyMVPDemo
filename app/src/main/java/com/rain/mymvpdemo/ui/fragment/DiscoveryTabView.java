@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseFragment;
 import com.rain.mymvpdemo.ui.adapter.DiscoveryTabAdapter;
 import com.rain.mymvpdemo.ui.widget.TabLayoutHelper;
+import com.rain.mymvpdemo.util.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +36,8 @@ public class DiscoveryTabView extends BaseFragment {
     TabLayout tab;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     Unbinder unbinder;
 
     ArrayList<Fragment> fragments = new ArrayList<>();
@@ -46,6 +50,9 @@ public class DiscoveryTabView extends BaseFragment {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        // 状态栏透明和间距处理
+        StatusBarUtil.darkMode(getActivity());
+        StatusBarUtil.setPaddingSmart(getActivity(), toolbar);
         title.setText("发现");
         fragments.add(FollowFragment.newInstance());
         fragments.add(CategoryFragment.newInstance());

@@ -24,6 +24,7 @@ import com.rain.mymvpdemo.net.Exception.ErrorStatus;
 import com.rain.mymvpdemo.mvp.presenter.HomeTabPresenter;
 import com.rain.mymvpdemo.ui.activity.SearchActivity;
 import com.rain.mymvpdemo.ui.adapter.HomeAdapter;
+import com.rain.mymvpdemo.util.StatusBarUtil;
 import com.rain.mymvpdemo.util.TimeUtils;
 import com.rain.mymvpdemo.util.ToastUtil;
 import com.scwang.smartrefresh.header.MaterialHeader;
@@ -118,6 +119,13 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
         presenter.attachView(this);
         initRecycler();
         initBanner();
+        handleStatusBar();
+    }
+
+    private void handleStatusBar() {
+        // TODO: 2018/6/19  
+        StatusBarUtil.darkMode(getActivity());
+        StatusBarUtil.setPaddingSmart(getActivity(), toolbar);
     }
 
     private void initBanner() {

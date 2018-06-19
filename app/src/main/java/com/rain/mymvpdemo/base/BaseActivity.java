@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.classic.common.MultipleStatusView;
+import com.gyf.barlibrary.ImmersionBar;
+import com.rain.mymvpdemo.R;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -26,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final String TAG  = BaseActivity.class.getSimpleName();
     private Unbinder bind;
     protected MultipleStatusView mLayoutStatusView;
+    protected ImmersionBar immersionBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,10 +39,31 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         setContentView(getLayoutId());
 
+        //初始化沉浸式
+        if (isImmersionBarEnabled())
+            initImmersionBar();
+
         bind = ButterKnife.bind(this);
 
         initViews(savedInstanceState);
         initListener();
+    }
+
+    protected void initImmersionBar() {
+        immersionBar = ImmersionBar.with(this);// 沉浸式状态栏设置
+        immersionBar.fitsSystemWindows(true)
+                .statusBarColor(R.color.colorPrimary)
+//                .navigationBarColor(R.color.colorPrimary)
+                .keyboardEnable(true)
+                .init();
+    }
+
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
     }
 
     private void initListener() {
@@ -60,6 +84,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         bind.unbind();
+        if (immersionBar != null) {
+            immersionBar.destroy();
+        }
     }
 
     public abstract int getLayoutId();

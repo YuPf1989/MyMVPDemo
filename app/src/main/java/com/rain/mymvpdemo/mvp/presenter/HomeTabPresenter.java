@@ -69,7 +69,7 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
                             }
                         }
                         view.onHideLoading();
-                        ((HomeTabContract.View) view).onSetAdapterData(newBannerList);
+                        ((HomeTabContract.View) view).setLoadData(newBannerList);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -107,7 +107,7 @@ public class HomeTabPresenter extends BasePresenter implements HomeTabContract.P
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         view.onHideLoading();
-                        ((HomeTabContract.View) view).onLoadMoreFail(ExceptionHandle.handleException(throwable),ExceptionHandle.getErrorCode());
+                        ((HomeTabContract.View) view).onLoadFail();
                     }
                 });
         this.addSubscription(disposable);

@@ -3,6 +3,7 @@ package com.rain.mymvpdemo.ui.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,24 +77,9 @@ public class RankFragment extends LazyLoadFragment implements RankContract.View 
     }
 
     @Override
-    public void onSetAdapterData(List<?> list) {
+    public void setLoadData(List<?> list) {
         onHideLoading();
         adapter.setNewData((List<HomeBean.IssueListBean.ItemListBean>) list);
-    }
-
-    @Override
-    public void onLoadEnd() {
-
-    }
-
-    @Override
-    public void onLoadComplete() {
-
-    }
-
-    @Override
-    public void setLoadMoreData(List<?> list) {
-
     }
 
     @Override

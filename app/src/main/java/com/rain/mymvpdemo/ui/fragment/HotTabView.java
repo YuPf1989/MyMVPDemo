@@ -4,24 +4,20 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.classic.common.MultipleStatusView;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseFragment;
-import com.rain.mymvpdemo.base.BaseListFragment;
 import com.rain.mymvpdemo.mvp.contract.HotContract;
 import com.rain.mymvpdemo.mvp.model.entity.TabInfoBean;
 import com.rain.mymvpdemo.mvp.presenter.HotPresenter;
 import com.rain.mymvpdemo.net.Exception.ErrorStatus;
 import com.rain.mymvpdemo.ui.adapter.DiscoveryTabAdapter;
-import com.rain.mymvpdemo.ui.widget.TabLayoutHelper;
 import com.rain.mymvpdemo.util.StatusBarUtil;
 import com.rain.mymvpdemo.util.ToastUtil;
 

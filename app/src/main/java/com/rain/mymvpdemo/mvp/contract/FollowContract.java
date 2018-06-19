@@ -2,6 +2,8 @@ package com.rain.mymvpdemo.mvp.contract;
 
 import com.rain.mymvpdemo.base.IBaseListView;
 import com.rain.mymvpdemo.base.IBasePresenter;
+import com.rain.mymvpdemo.base.IBaseView;
+import com.rain.mymvpdemo.base.ILoadMoreView;
 import com.rain.mymvpdemo.mvp.model.entity.HomeBean;
 
 import java.util.List;
@@ -12,8 +14,8 @@ import java.util.List;
  * Description:
  */
 public interface FollowContract {
-    interface View extends IBaseListView {
-        void onLoadMoreError(String err_msg,int err_code);
+    interface View extends IBaseView,ILoadMoreView {
+        void setLoadData(List<?> list);
     }
 
     interface Presenter extends IBasePresenter {

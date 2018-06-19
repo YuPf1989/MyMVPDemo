@@ -76,7 +76,7 @@ public class FollowFragment extends LazyLoadFragment implements FollowContract.V
     }
 
     @Override
-    public void onSetAdapterData(List<?> list) {
+    public void setLoadData(List<?> list) {
         multipleStatusView.showContent();
         followAdapter.setNewData((List<HomeBean.IssueListBean.ItemListBean>) list);
     }
@@ -92,8 +92,8 @@ public class FollowFragment extends LazyLoadFragment implements FollowContract.V
     }
 
     @Override
-    public void setLoadMoreData(List<?> list) {
-        followAdapter.addData((List<HomeBean.IssueListBean.ItemListBean>) list);
+    public void setLoadMoreData(Object o) {
+        followAdapter.addData((List<HomeBean.IssueListBean.ItemListBean>) o);
     }
 
     @Override
@@ -117,8 +117,7 @@ public class FollowFragment extends LazyLoadFragment implements FollowContract.V
     }
 
     @Override
-    public void onLoadMoreError(String msg,int err_code) {
-        ToastUtil.showToast(msg + ":" + err_code);
+    public void onLoadFail() {
         followAdapter.loadMoreFail();
     }
 

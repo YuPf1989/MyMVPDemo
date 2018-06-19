@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.transition.Fade;
 import android.transition.Transition;
@@ -38,6 +39,7 @@ import com.rain.mymvpdemo.net.Exception.ErrorStatus;
 import com.rain.mymvpdemo.ui.adapter.HotWordAdapter;
 import com.rain.mymvpdemo.ui.adapter.RankAdapter;
 import com.rain.mymvpdemo.util.SoftKeyboardUtil;
+import com.rain.mymvpdemo.util.StatusBarUtil;
 import com.rain.mymvpdemo.util.ToastUtil;
 import com.rain.mymvpdemo.util.ViewAnimUtils;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -83,6 +85,8 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
     LinearLayout relContainer;
     @BindView(R.id.rel_frame)
     RelativeLayout relFrame;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     private SearchPresenter presenter;
 
     private static final String TAG = "SearchActivity";
@@ -135,6 +139,10 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
                 return false;
             }
         });
+
+        // 状态栏透明和间距处理
+        StatusBarUtil.darkMode(this);
+        StatusBarUtil.setPaddingSmart(this, toolbar);
     }
 
     private void initSearchResultRecycler() {

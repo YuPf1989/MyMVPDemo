@@ -126,23 +126,8 @@ public class CategoryFragment extends LazyLoadFragment implements CategoryContra
     }
 
     @Override
-    public void onSetAdapterData(List<?> list) {
+    public void setLoadData(List<?> list) {
         multipleStatusView.showContent();
         adapter.setNewData((List<CategoryBean>) list);
-    }
-
-    @Override
-    public void onLoadEnd() {
-
-    }
-
-    @Override
-    public void onLoadComplete() {
-
-    }
-
-    @Override
-    public void setLoadMoreData(List<?> list) {
-
     }
 }

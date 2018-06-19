@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -52,14 +53,12 @@ public class MainActivity extends BaseActivity {
             discoveryTabView = (DiscoveryTabView) getSupportFragmentManager().findFragmentByTag(DiscoveryTabView.class.getSimpleName());
             myTabView = (MineTabView) getSupportFragmentManager().findFragmentByTag(MineTabView.class.getSimpleName());
             hotTabView = (HotTabView) getSupportFragmentManager().findFragmentByTag(HotTabView.class.getSimpleName());
-            showFragment(savedInstanceState.getInt(POSITION));
+            position = savedInstanceState.getInt(POSITION);
             bottomNavigation.setSelectedItemId(savedInstanceState.getInt(SELECT_ITEM));
-        } else {
-            showFragment(HOME_TAB);
         }
+        showFragment(position);
     }
 
-    // TODO: 2018/6/19 不使用第三方的沉浸式
     @Override
     protected boolean isImmersionBarEnabled() {
         return false;
@@ -79,7 +78,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(POSITION, position);
-        outState.putInt(SELECT_ITEM, bottomNavigation.getCurrentItem());
+        outState.putInt(SELECT_ITEM, bottomNavigation.getSelectedItemId());
         super.onSaveInstanceState(outState);
     }
 
@@ -131,6 +130,7 @@ public class MainActivity extends BaseActivity {
                 break;
         }
         ft.commit();
+
     }
 
     private void hideFragment(FragmentTransaction ft) {

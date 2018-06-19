@@ -123,7 +123,6 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
     }
 
     private void handleStatusBar() {
-        // TODO: 2018/6/19  
         StatusBarUtil.darkMode(getActivity());
         StatusBarUtil.setPaddingSmart(getActivity(), toolbar);
     }
@@ -192,8 +191,8 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
     }
 
     @Override
-    public void setLoadMoreData(List<?> list) {
-        homeAdapter.addData((List<HomeBean.IssueListBean.ItemListBean>) list);
+    public void setLoadMoreData(Object o) {
+        homeAdapter.addData((List<HomeBean.IssueListBean.ItemListBean>) o);
     }
 
     @OnClick(R.id.search)
@@ -212,7 +211,7 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
     }
 
     @Override
-    public void onSetAdapterData(List<?> list) {
+    public void setLoadData(List<?> list) {
         multipleStatusView.showContent();
         homeAdapter.setNewData((List<HomeBean.IssueListBean.ItemListBean>) list);
     }
@@ -243,7 +242,7 @@ public class HomeTabView extends BaseFragment implements HomeTabContract.View, O
     }
 
     @Override
-    public void onLoadMoreFail(String err_msg, int err_code) {
+    public void onLoadFail() {
         homeAdapter.loadMoreFail();
     }
 

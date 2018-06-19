@@ -32,7 +32,7 @@ public class FollowPresenter extends BasePresenter implements FollowContract.Pre
                     public void accept(HomeBean.IssueListBean issueListBean) throws Exception {
                         nextPageUrl = issueListBean.getNextPageUrl();
                         List<HomeBean.IssueListBean.ItemListBean> itemList = issueListBean.getItemList();
-                        ((FollowContract.View) view).onSetAdapterData(itemList);
+                        ((FollowContract.View) view).setLoadData(itemList);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -62,7 +62,7 @@ public class FollowPresenter extends BasePresenter implements FollowContract.Pre
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable e) throws Exception {
-                        ((FollowContract.View) view).onLoadMoreError(ExceptionHandle.handleException(e),ExceptionHandle.getErrorCode());
+                        ((FollowContract.View) view).onLoadFail();
                     }
                 });
         this.addSubscription(disposable);

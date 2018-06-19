@@ -24,7 +24,7 @@ public class CategoryPresenter extends BasePresenter implements CategoryContract
                 .subscribe(new Consumer<ArrayList<CategoryBean>>() {
                     @Override
                     public void accept(ArrayList<CategoryBean> categoryBeans) throws Exception {
-                        ((CategoryContract.View) view).onSetAdapterData(categoryBeans);
+                        ((CategoryContract.View) view).setLoadData(categoryBeans);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

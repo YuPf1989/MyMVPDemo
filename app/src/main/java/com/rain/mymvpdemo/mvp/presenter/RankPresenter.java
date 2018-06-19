@@ -29,7 +29,7 @@ public class RankPresenter extends BasePresenter implements RankContract.Present
                     @Override
                     public void accept(HomeBean.IssueListBean data) throws Exception {
                         List<HomeBean.IssueListBean.ItemListBean> itemList = data.getItemList();
-                        ((RankContract.View) view).onSetAdapterData(itemList);
+                        ((RankContract.View) view).setLoadData(itemList);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

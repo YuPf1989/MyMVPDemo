@@ -5,13 +5,16 @@ import com.rain.mymvpdemo.base.IBasePresenter;
 import com.rain.mymvpdemo.base.IBaseView;
 import com.rain.mymvpdemo.mvp.model.entity.TabInfoBean;
 
+import java.util.List;
+
 /**
  * Author:rain
  * Date:2018/5/31 11:53
  * Description:
  */
 public interface RankContract {
-    interface View extends IBaseListView {
+    interface View extends IBaseView {
+        void setLoadData(List<?> list);
     }
 
     interface Presenter extends IBasePresenter {

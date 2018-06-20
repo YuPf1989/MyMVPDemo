@@ -42,11 +42,9 @@ public class ExceptionHandle {
     public static String handleException(Throwable e) {
         e.printStackTrace();
         if (e instanceof SocketTimeoutException) {
-            Log.e(TAG, "网络连接异常: " + e.getMessage());
             setErrorMsg("网络连接异常");
             setErrorCode(ErrorStatus.NETWORK_ERROR);
         } else if (e instanceof ConnectException) {
-            Log.e(TAG, "网络连接异常: " + e.getMessage());
             setErrorMsg("网络连接异常");
             setErrorCode(ErrorStatus.NETWORK_ERROR);
         } else if (!(e instanceof JsonParseException) && !(e instanceof JSONException) && !(e instanceof ParseException)) {
@@ -54,7 +52,6 @@ public class ExceptionHandle {
                 setErrorMsg(String.valueOf(e.getMessage()));
                 setErrorCode(ErrorStatus.SERVER_ERROR);
             } else if (e instanceof UnknownHostException) {
-                Log.e(TAG, "网络连接异常: " + e.getMessage());
                 setErrorMsg("网络连接异常");
                 setErrorCode(ErrorStatus.NETWORK_ERROR);
             } else if (e instanceof IllegalArgumentException) {
@@ -70,7 +67,6 @@ public class ExceptionHandle {
                 setErrorCode(ErrorStatus.UNKNOWN_ERROR);
             }
         } else {
-            Log.e(TAG, "数据解析异常: " + e.getMessage());
             setErrorMsg("数据解析异常");
             setErrorCode(ErrorStatus.SERVER_ERROR);
         }

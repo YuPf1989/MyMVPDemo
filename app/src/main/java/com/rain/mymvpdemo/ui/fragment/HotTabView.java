@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.classic.common.MultipleStatusView;
 import com.rain.mymvpdemo.R;
 import com.rain.mymvpdemo.base.BaseFragment;
+import com.rain.mymvpdemo.base.BaseMvpFragment;
 import com.rain.mymvpdemo.mvp.contract.HotContract;
 import com.rain.mymvpdemo.mvp.model.entity.TabInfoBean;
 import com.rain.mymvpdemo.mvp.presenter.HotPresenter;
@@ -33,7 +34,7 @@ import butterknife.Unbinder;
  * Date:2018/5/15 9:33
  * Description:
  */
-public class HotTabView extends BaseFragment implements HotContract.View {
+public class HotTabView extends BaseMvpFragment<HotPresenter> implements HotContract.View {
     @BindView(R.id.title)
     TextView title;
     @BindView(R.id.tab)
@@ -48,7 +49,6 @@ public class HotTabView extends BaseFragment implements HotContract.View {
 
     ArrayList<String> titles = new ArrayList<>();
     ArrayList<Fragment> fragments = new ArrayList<>();
-    private HotPresenter presenter;
 
     @Override
     protected int getLayoutId() {
@@ -62,8 +62,6 @@ public class HotTabView extends BaseFragment implements HotContract.View {
         StatusBarUtil.setPaddingSmart(getActivity(), toolbar);
         mLayoutStatusView = multipleStatusView;
         title.setText("热门");
-        presenter = new HotPresenter();
-        presenter.attachView(this);
     }
 
     @Override
@@ -90,10 +88,14 @@ public class HotTabView extends BaseFragment implements HotContract.View {
     }
 
     @Override
+    protected HotPresenter creatPresenter() {
+        return new HotPresenter();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-        presenter.detachView();
     }
 
     @Override

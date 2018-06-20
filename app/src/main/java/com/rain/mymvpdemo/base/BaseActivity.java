@@ -1,13 +1,17 @@
 package com.rain.mymvpdemo.base;
 
+import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import com.classic.common.MultipleStatusView;
 import com.gyf.barlibrary.ImmersionBar;
@@ -29,6 +33,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder bind;
     protected MultipleStatusView mLayoutStatusView;
     protected ImmersionBar immersionBar;
+    protected ProgressDialog progressDialog;
+    protected ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -106,6 +112,34 @@ public abstract class BaseActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void showLoadingProgressbar(){
+        createCenterProgressBar();
+        if (mProgressBar.getVisibility() == View.GONE) {
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    protected void hideLoadingProgressbar(){
+        if (null != mProgressBar && mProgressBar.getVisibility() == View.VISIBLE) {
+            mProgressBar.setVisibility(View.GONE);
+        }
+    }
+
+    private ProgressBar createCenterProgressBar(){
+        //整个Activity布局的最终父布局,参见参考资料
+        FrameLayout rootFrameLayout=(FrameLayout) this.findViewById(android.R.id.content);
+        FrameLayout.LayoutParams layoutParams=
+                new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity= Gravity.CENTER;
+        if (mProgressBar == null) {
+            mProgressBar = new ProgressBar(this);
+        }
+        mProgressBar.setLayoutParams(layoutParams);
+        mProgressBar.setVisibility(View.VISIBLE);
+        rootFrameLayout.addView(mProgressBar);
+        return mProgressBar;
     }
 
 }

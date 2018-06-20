@@ -8,6 +8,7 @@ import com.rain.mymvpdemo.mvp.model.HotModel;
 import com.rain.mymvpdemo.mvp.model.entity.CategoryBean;
 import com.rain.mymvpdemo.mvp.model.entity.TabInfoBean;
 import com.rain.mymvpdemo.net.Exception.ExceptionHandle;
+import com.rain.mymvpdemo.net.MyObserver.MyObserver2;
 
 import java.util.ArrayList;
 
@@ -23,18 +24,30 @@ public class HotPresenter extends BasePresenter implements HotContract.Presenter
     @Override
     public void doLoadData() {
         checkViewAttached();
-        Disposable disposable = HotModel.getRankList()
-                .subscribe(new Consumer<TabInfoBean>() {
+//        Disposable disposable = HotModel.getRankList()
+//                .subscribe(new Consumer<TabInfoBean>() {
+//                    @Override
+//                    public void accept(TabInfoBean infoBean) throws Exception {
+//                        ((HotContract.View) view).onSetData(infoBean);
+//                    }
+//                }, new Consumer<Throwable>() {
+//                    @Override
+//                    public void accept(Throwable e) throws Exception {
+//                        view.onShowNetError(ExceptionHandle.handleException(e),ExceptionHandle.getErrorCode());
+//                    }
+//                });
+
+         HotModel.getRankList()
+                .subscribe(new MyObserver2<TabInfoBean>(view,true,this) {
                     @Override
-                    public void accept(TabInfoBean infoBean) throws Exception {
+                    public void onNext(TabInfoBean infoBean) {
                         ((HotContract.View) view).onSetData(infoBean);
                     }
-                }, new Consumer<Throwable>() {
+
                     @Override
-                    public void accept(Throwable e) throws Exception {
+                    public void onError(Throwable e) {
                         view.onShowNetError(ExceptionHandle.handleException(e),ExceptionHandle.getErrorCode());
                     }
                 });
-        this.addSubscription(disposable);
     }
 }

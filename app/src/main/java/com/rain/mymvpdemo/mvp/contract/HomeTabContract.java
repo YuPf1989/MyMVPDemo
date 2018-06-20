@@ -1,6 +1,5 @@
 package com.rain.mymvpdemo.mvp.contract;
 
-import com.rain.mymvpdemo.base.IBaseListView;
 import com.rain.mymvpdemo.base.IBasePresenter;
 import com.rain.mymvpdemo.base.IBaseView;
 import com.rain.mymvpdemo.base.ILoadMoreView;
